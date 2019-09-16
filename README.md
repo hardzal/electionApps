@@ -29,21 +29,21 @@ jika pemilihan sudah berakhir maka user akan diberi notifikasi bahwa pemilihan t
 
 ## Routes
 
-/home
-/home/login
+- [ ] /home
+- [ ] /home/login
 
-/elections
-/elections/:id
-/elections/create
-/elections/:id/delete
-/elections/:id/update
-/elections/:id/stats
-/elections/:id/report
+- [ ] /elections
+- [ ] /elections/:id
+- [ ] /elections/create
+- [ ] /elections/:id/delete
+- [ ] /elections/:id/update
+- [ ] /elections/:id/stats
+- [ ] /elections/:id/report
 
-/admin
-/admin/settings
-/admin/feedbacks
+- [ ] /admin
+- [ ] /admin/settings
+- [ ] /admin/feedbacks
 
-/user
-/user/feedback
-/user/profile
+- [ ] /user
+- [ ] /user/feedback
+- [ ] /user/profile
