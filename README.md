@@ -2,19 +2,19 @@
 
 ## Spesifications
 
-- Authentication
-  - [ ] Login Admin
-  - [ ] Logout Admin
-  - [ ] Login Pemilih
-  - [ ] Register Pemilih
+- [ ] Login + Logout
+- [ ] CRUD Kandidat
+- [ ] CRUD Pemilih
+- [ ] CRUD Pemilihan
+- [ ] Report Pemilihan
+- [ ] Statistik Pemilihan
+- [ ] Notification Pemilihan
 
-- CRUD Kandidat
-- CRUD Pemilih
-- CRUD Pemilihan
-- Report Pemilihan
-- Statistik Pemilihan
+---
 
-User mempunyai akun? 
+## Flow
+
+User mempunyai akun?
  jika iya maka login
  jika tidak bisa mendaftar melalui form menunggu persetujuan admin
 
@@ -27,3 +27,23 @@ jika sudah memilih maka user tidak bisa mengganti opsi pemilihannya, dan tidak b
 
 jika pemilihan sudah berakhir maka user akan diberi notifikasi bahwa pemilihan telah berakhir, dan bisa melihat hasil keseluruhannya.
 
+## Routes
+
+/home
+/home/login
+
+/elections
+/elections/:id
+/elections/create
+/elections/:id/delete
+/elections/:id/update
+/elections/:id/stats
+/elections/:id/report
+
+/admin
+/admin/settings
+/admin/feedbacks
+
+/user
+/user/feedback
+/user/profile
