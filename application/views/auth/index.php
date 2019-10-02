@@ -8,6 +8,7 @@
                 <img src="<?= base_url(); ?>/assets/img/header.jpg" alt="logo" width="80" class="shadow-light rounded-circle mb-5 mt-2">
                 <h4 class="text-dark font-weight-normal">Welcome to <span class="font-weight-bold">Himatif Election</span></h4>
                 <p class="text-grey">Before you vote, you must login or register if you don't already have an account.</p>
+                <?= $this->session->flashdata('message'); ?>
                 <form method="POST" action="" class="needs-validation" novalidate="">
                 <div class="form-group">
                     <label for="nim">NIM</label>
