@@ -9,6 +9,7 @@
 - [ ] Report Pemilihan
 - [ ] Statistik Pemilihan
 - [ ] Notification Pemilihan
+- [ ] Logs Activity
 
 ---
 
