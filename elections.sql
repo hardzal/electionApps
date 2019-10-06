@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `project_pemilihan_hmj`;
+
 CREATE TABLE `users` (
   `id` int PRIMARY KEY AUTO_INCREMENT NOT NULL,
   `role_id` int NOT NULL,
