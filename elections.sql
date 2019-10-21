@@ -1,4 +1,4 @@
-CREATE DATABASE IF NOT EXISTS `project_pemilihan_hmj`;
+CREATE DATABASE IF NOT EXISTS `project_elections`;
 
 CREATE TABLE `users` (
   `id` int PRIMARY KEY AUTO_INCREMENT NOT NULL,
@@ -21,6 +21,7 @@ CREATE TABLE `user_details` (
   `id` int PRIMARY KEY AUTO_INCREMENT NOT NULL,
   `generation_id` int NOT NULL,
   `major_id` int NOT NULL,
+	`email` varchar(255) NOT NULL,
   `name` varchar(255) NOT NULL,
   `hp` varchar(255) NOT NULL,
   `address` text NOT NULL,
