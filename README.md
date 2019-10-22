@@ -31,8 +31,9 @@ jika pemilihan sudah berakhir maka user akan diberi notifikasi bahwa pemilihan t
 ## Routes
 
 - [ ] /home
-- [ ] /home/login
-
+- [ ] /auth/login
+- [ ] /auth/signup
+  
 - [ ] /elections
 - [ ] /elections/:id
 - [ ] /elections/create

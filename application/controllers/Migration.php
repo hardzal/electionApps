@@ -32,6 +32,13 @@ class Migration extends CI_Controller
 			echo "Migrations run successfully" . PHP_EOL;
 		}
 	}
+
+	public function drop()
+	{ }
+
+	public function reset()
+	{ }
+
 	protected function make_migration_file($name)
 	{
 		$date = new DateTime();
