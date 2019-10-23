@@ -11,9 +11,22 @@ class Auth_Model extends CI_Model
 
 	public function signupUser($data)
 	{
+		$this->db->trans_start();
 		$this->db->insert('users', $data['user']);
-		$this->db->insert('user_details', $data['user_detail']);
 
-		return $this->db->affected_rows();
+		$last_user_id = $this->db->insert_id();
+
+		$user_detail = [
+			'user_id' => $last_user_id,
+			'name' => $data['detail']['name'],
+			'hp' => $data['detail']['hp'],
+		];
+
+		$this->db->insert('user_details', $user_detail);
+
+		if ($this->db->trans_status() == FALSE) {
+			$this->db->trans_rollback();
+		}
+		return $this->db->trans_complete();;
 	}
 }

@@ -1,6 +1,6 @@
 <?php
 
-class Admin extends CI_Controller
+class Member extends CI_Controller
 {
 	public function __construct()
 	{
@@ -9,7 +9,7 @@ class Admin extends CI_Controller
 
 	public function index()
 	{
-		echo "Hello, Admin?";
+		echo "Hello, Member!";
 		echo "<a href='" . base_url('auth/logout') . "'>Logout</a>";
 	}
 }

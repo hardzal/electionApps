@@ -14,14 +14,6 @@ class Migration_user_details extends CI_Migration
 				'type' => 'INT',
 				'unsigned' => TRUE,
 			),
-			'generation_id' => array(
-				'type' => 'INT',
-				'unsigned' => TRUE,
-			),
-			'major_id' => array(
-				'type' => 'INT',
-				'unsigned' => TRUE,
-			),
 			'name' => array(
 				'type' => 'VARCHAR',
 				'constraint' => 255,
@@ -29,9 +21,6 @@ class Migration_user_details extends CI_Migration
 			'hp' => array(
 				'type' => 'VARCHAR',
 				'constraint' => 15,
-			),
-			'image' => array(
-				'type' => 'TEXT',
 			),
 			'created_at' => array(
 				'type' => 'TIMESTAMP',

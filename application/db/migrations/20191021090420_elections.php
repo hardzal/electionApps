@@ -10,14 +10,6 @@ class Migration_elections extends CI_Migration
 				'unsigned' => TRUE,
 				'auto_increment' => TRUE
 			),
-			'major_id' => array(
-				'type' => 'INT',
-				'unsigned' => TRUE,
-			),
-			'generation_id' => array(
-				'type' => 'INT',
-				'unsigned' => TRUE,
-			),
 			'title' => array(
 				'type' => 'VARCHAR',
 				'constraint' => 255,
