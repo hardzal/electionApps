@@ -29,4 +29,11 @@ class Auth_Model extends CI_Model
 		}
 		return $this->db->trans_complete();;
 	}
+
+	public function insertToken($user_token)
+	{
+		$this->db->insert('user_token', $user_token);
+
+		return $this->db->affected_rows();
+	}
 }

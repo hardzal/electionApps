@@ -105,11 +105,12 @@ class Auth extends CI_Controller
 
 	private function _signup()
 	{
+		$email = $this->input->post('email', true);
 		$user = [
 			'user' => [
 				'role_id' => 3,
 				'nim' => $this->input->post('nim', true),
-				'email' => $this->input->post('email', true),
+				'email' => $email,
 				'password' => password_hash($this->input->post('password', true), PASSWORD_DEFAULT),
 				'is_active' => 0,
 			],
@@ -118,30 +119,182 @@ class Auth extends CI_Controller
 				'hp' => $this->input->post('hp', true),
 			],
 		];
+		$token = base64_encode(random_bytes(32));
+		$user_token = [
+			'email' => $email,
+			'token' => $token,
+			'date_created' => time()
+		];
+
+		$this->auth->insertToken($user_token);
 
 		if ($this->auth->signupUser($user)) {
-			$this->session->set_flashdata('message', '<div class="alert alert-success">Congratulation! your account has been created. Please activate your account!</div>');
-			redirect('auth/login');
+			if ($this->_sendEmail($token, 'verify')) {
+				$this->session->set_flashdata('message', '<div class="alert alert-success">Congratulation! your account has been created. Please activate your account!</div>');
+				redirect('auth/login');
+			} else {
+				$this->session->set_flashdata('message', '<div class="alert alert-danger">Failed send email accound. Please contact admin!</div>');
+				redirect('auth/signup');
+			}
 		} else {
 			$this->session->set_flashdata('message', '<div class="alert alert-danger">Failed registered accound. Please contact admin!</div>');
 			redirect('auth/signup');
 		}
 	}
 
-	private function _sendEmail()
-	{ }
+	private function _sendEmail($token, $type)
+	{ 
+		$config = [
+			'protocol' => 'smtp',
+			'smtp_host' => 'ssl://smtp.googlemail.com',
+			'smtp_user' => 'langkahkita01@gmail.com',
+			'smtp_pass' => 'qwerty1070',
+			'smtp_port' => 465,
+			'mailtype' => 'html',
+			'charset' 	=> 'utf-8',
+			'newline' 	=> "\r\n"
+		];
+
+		$this->load->library('email', $config);
+		$this->email->initialize($config);
+
+		$this->email->from('langkahkita01@gmail.com', 'Himatif Admin');
+		$this->email->to($this->input->post('email'));
+
+		if ($type == 'verify') {
+			$this->email->subject('Account Verification | Himatif Admin');
+			$this->email->message('Click this link to verify your account : <a href="' . base_url('auth/verify?email=') . $this->input->post('email') . '&token=' . urlencode($token) . '">Activate</a>');
+		} else if ($type == 'forgot') {
+			$this->email->subject('Reset Password | Himatif Admin');
+			$this->email->message('Click this link to reset your password account : <a href="' . base_url() . 'auth/resetpassword?email=' . $this->input->post('email') . '&token=' . urlencode($token) . '">Reset</a>');
+		}
+
+		if ($this->email->send()) {
+			return true;
+		} else {
+			echo $this->email->print_debugger();
+			return false;
+		}
+	}
 
 	public function verify()
-	{ }
+	{ 
+		$email = $this->input->get('email');
+		$token = $this->input->get('token');
+
+		$user = $this->auth->getUser($email);
+
+		if ($user) {
+			$user_token = $this->auth->getToken($token);
+
+			if ($user_token) {
+				if (time() - $user_token['created_at'] < (60 * 60 * 24)) {
+					$this->auth->activatedUser($email);
+					$this->auth->deleteToken($email);
+
+					$this->session->set_userdata('verified_email', $email);
+					$this->session->set_flashdata('message', '<div class="alert alert-success">Congratulation! your account has been created ' . $email . ' has been activated. Please Insert User details!</div>');
+					redirect('auth/userdetail');
+				} else {
+					$this->auth->deleteUser($email);
+					$this->auth->deleteToken($email);
+
+					$this->session->set_flashdata('message', '<div class="alert alert-danger">Account activation failed! Token Expired!</div>');
+					redirect('auth');
+				}
+			} else {
+				$this->session->set_flashdata('message', '<div class="alert alert-danger">Account activation failed! Token failed!</div>');
+				redirect('auth');
+			}
+		} else {
+			$this->session->set_flashdata('message', '<div class="alert alert-danger">Account activation failed! Email not registered!</div>');
+			redirect('auth');
+		}
+	}
 
 	public function forgotPassword()
-	{ }
+	{ 
+		if ($this->session->userdata('email')) {
+			redirect('user');
+		}
+
+		$data['title'] = "Forgot Password";
+
+		$this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email');
+
+		if ($this->form_validation->run() == FALSE) {
+			$this->load->view('layouts/auth_header', $data);
+			$this->load->view('auth/forgot-password');
+			$this->load->view('layouts/auth_footer');
+		} else {
+			$email = $this->input->post('email', true);
+
+			if ($this->auth->checkActiveEmail($email)) {
+
+				$token = $this->auth->insertToken();
+
+				$this->_sendEmail($token, 'forgot');
+
+				$this->session->set_flashdata('message', '<div class="alert alert-success">Please check your email to reset your password.</div>');
+				redirect('auth/forgotpassword');
+			} else {
+				$this->session->set_flashdata('message', '<div class="alert alert-danger">Email is not registered or activated</div>');
+				redirect('auth/forgotpassword');
+			}
+		}
+	}
 
 	public function resetPassword()
-	{ }
+	{ 
+		$email = $this->input->get('email');
+		$token = $this->input->get('token');
+
+		$user = $this->auth->getUser($email);
+
+		if ($user) {
+			$user_token = $this->auth->getToken($token);
+
+			if ($user_token) {
+				$this->session->set_userdata('reset_email', $email);
+				$this->changePassword();
+			} else {
+				$this->session->set_flashdata('message', '<div class="alert alert-danger">Reset password failed! Token invalid.</div>');
+				redirect('auth');
+			}
+		} else {
+			$this->session->set_flashdata('message', '<div class="alert alert-danger">Reset password failed!. Wrong email.');
+			redirect('auth');
+		}
+	}
 
 	public function changePassword()
-	{ }
+	{ 
+		if (!$this->session->userdata('reset_email')) {
+			redirect('auth');
+		}
+
+		$data['title'] = "Change Password";
+		$this->form_validation->set_rules('password', 'Password', 'required|trim|min_length[6]|matches[confirm_password]');
+		$this->form_validation->set_rules('confirm_password', 'Confirm Password', 'required|trim|matches[password]');
+
+		if ($this->form_validation->run() ==  FALSE) {
+			$this->load->view('layouts/auth_header', $data);
+			$this->load->view('auth/change-password');
+			$this->load->view('layouts/auth_footer');
+		} else {
+			$password = password_hash($this->input->post('password', true), PASSWORD_DEFAULT);
+			$email = $this->session->userdata('reset_email');
+
+			if ($this->auth->changePassword($password, $email)) {
+				$this->session->unset_userdata('reset_email');
+				$this->session->set_flashdata('message', '<div class="alert alert-success">Password has been changed!. Please login</div>');
+				redirect('auth');
+			} else {
+				$this->session->set_flashdata('message', '<div class="alert alert-danger">Failed change password!. Please contact admin</div>');
+				redirect('auth');
+			}
+		}
+	}
 
 	public function logout()
 	{
@@ -152,5 +305,10 @@ class Auth extends CI_Controller
 	}
 
 	public function blocked()
-	{ }
+	{ 
+		$data['title'] = "403 Access Blocked";
+		$this->load->view('layouts/header', $data);
+		$this->load->view('auth/blocked', $data);
+		$this->load->view('layouts/footer');
+	}
 }

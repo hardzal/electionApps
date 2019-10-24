@@ -1,5 +1,5 @@
 <?php
-class Migration_user_roles extends CI_Migration
+class Migration_roles extends CI_Migration
 {
 	public function up()
 	{
@@ -44,10 +44,10 @@ class Migration_user_roles extends CI_Migration
 			)
 		);
 
-		$this->db->insert_batch('user_roles', $data);
+		$this->db->insert_batch('roles', $data);
 	}
 	public function down()
 	{
-		$this->dbforge->drop_table('user_roles');
+		$this->dbforge->drop_table('roles');
 	}
 }
