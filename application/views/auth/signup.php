@@ -19,33 +19,33 @@
 								<div class="form-group">
 									<label for="nama">Nama</label>
 									<input id="nama" type="text" value="<?= set_value('nama'); ?>" class="form-control" name="nama" placeholder="Isikan nama...">
-									<div class="invalid-feedback">
-										<?= form_error('nama', '<small class="text-danger pl-3">', '</small>'); ?>
-									</div>
+									<!--<div class="invalid-feedback">-->
+									<?= form_error('nama', '<small class="text-danger pl-3">', '</small>'); ?>
+									<!--</div>-->
 								</div>
 
 								<div class="form-group">
 									<label for="nim">NIM</label>
 									<input id="nim" type="text" value="<?= set_value('nim'); ?>" class="form-control" name="nim" placeholder="Isikan NIM..">
-									<div class="invalid-feedback">
-										<?= form_error('nim', '<small class="text-danger pl-3">', '</small>'); ?>
-									</div>
+									<!--<div class="invalid-feedback">-->
+									<?= form_error('nim', '<small class="text-danger pl-3">', '</small>'); ?>
+									<!--</div>-->
 								</div>
 
 								<div class="form-group">
 									<label for="email">Email</label>
-									<input id="email" type="email" value="<?= set_value('email'); ?>" class="form-control" name="email" placeholder="Isikan email..">
-									<div class="invalid-feedback">
-										<?= form_error('email', '<small class="text-danger pl-3">', '</small>'); ?>
-									</div>
+									<input id="email" type="text" value="<?= set_value('email'); ?>" class="form-control" name="email" placeholder="Isikan email..">
+									<!--<div class="invalid-feedback">-->
+									<?= form_error('email', '<small class="text-danger pl-3">', '</small>'); ?>
+									<!--</div>-->
 								</div>
 
 								<div class="form-group">
 									<label for="hp">No HP</label>
 									<input id="hp" type="text" value="<?= set_value('hp'); ?>" class="form-control" name="hp" placeholder="Isikan no hp..">
-									<div class="invalid-feedback">
-										<?= form_error('hp', '<small class="text-danger pl-3">', '</small>'); ?>
-									</div>
+									<!--<div class="invalid-feedback">-->
+									<?= form_error('hp', '<small class="text-danger pl-3">', '</small>'); ?>
+									<!--</div>-->
 								</div>
 
 								<div class="row">
@@ -77,7 +77,7 @@
 						</div>
 					</div>
 					<div class="simple-footer">
-						Copyright &copy;Himatif <?= date('Y'); ?>
+						Copyright &copy;HIMATIF <?= date('Y'); ?>
 					</div>
 				</div>
 			</div>

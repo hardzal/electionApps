@@ -5,7 +5,7 @@
 				<div class="col-lg-4 col-md-6 col-12 order-lg-1 min-vh-100 order-2 bg-white">
 					<div class="p-4 m-3">
 						<img src="<?= base_url(); ?>/assets/img/header.jpg" alt="logo" width="80" class="shadow-light rounded-circle mb-5 mt-2">
-						<h4 class="text-dark font-weight-normal">Selamat datang di <span class="font-weight-bold">Pemilihan Ketua Himatif</span></h4>
+						<h4 class="text-dark font-weight-normal"><span class="font-weight-bold">Pemilihan Ketua Himatif</span></h4>
 						<p class="text-grey">Sebelum memilih, kamu harus login terlebih dahulu.</p>
 
 						<?= $this->session->flashdata('message'); ?>
@@ -49,14 +49,13 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-8 col-12 order-lg-2 order-1 min-vh-100 background-walk-y position-relative overlay-gradient-bottom" data-background="<?= base_url(); ?>/assets/img/landing.jpeg">
+				<div class="col-lg-8 col-12 order-lg-2 order-1 min-vh-100 background-walk-y position-relative overlay-gradient-bottom" data-background="<?= base_url(); ?>/assets/img/hmtf.png" style="background-size: cover;">
 					<div class="absolute-bottom-left index-2">
 						<div class="text-light p-5 pb-2">
 							<div class="mb-5 pb-3">
 								<h1 class="mb-2 display-4 font-weight-bold">Wellcome</h1>
 								<h5 class="font-weight-normal text-muted-transparent">Himatif UPN"V" YK</h5>
 							</div>
-							<p>Alqory Aji Alamsyah as head of HIMATIF</p>
 						</div>
 					</div>
 				</div>

@@ -44,22 +44,22 @@ class Auth extends CI_Controller
 		$user = $this->auth->checkUser($nim);
 
 		if ($user) {
-			if ($user['is_active']) {
-				if (password_verify($password, $user['password'])) {
+			if ($user->is_active) {
+				if (password_verify($password, $user->password)) {
 					$data = [
-						'nim' => $user['nim'],
-						'role_id' => $user['role_id']
+						'nim' => $user->nim,
+						'role_id' => $user->role_id
 					];
 
 					// set session
 					$this->session->set_userdata($data);
 
 					// check role
-					if ($user['role_id'] == 1) {
+					if ($user->role_id == 1) {
 						redirect('admin');
-					} else if ($user['role_id'] == 2) {
+					} else if ($user->role_id == 2) {
 						redirect('candidate');
-					} else if ($user['role_id'] == 3) {
+					} else if ($user->role_id == 3) {
 						redirect('member');
 					} else {
 						$this->session->unset_userdata('nim');
@@ -83,16 +83,22 @@ class Auth extends CI_Controller
 			redirect('home');
 		}
 
-		$data['title'] = "Halamana Pendaftaran";
-		// 0878-0850-5477
+		$data['title'] = "Halaman Pendaftaran";
 
 		// validation
 		$this->form_validation->set_rules('nama', 'Nama', 'required|trim');
 		$this->form_validation->set_rules('hp', 'No HP', 'required|trim|max_length[15]|min_length[12]');
 		$this->form_validation->set_rules('nim', 'NIM', 'required|trim|max_length[9]|min_length[9]');
-		$this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[users.email]');
-		$this->form_validation->set_rules('password', 'Password', 'required|trim|min_length[8]|matches[confirm_password]');
-		$this->form_validation->set_rules('confirm_password', 'Confirm Password', 'required|trim|matches[password]');
+		$this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[users.email]', [
+			'is_unique' => "Email sudah terdaftar!",
+			'valid_email' => "Email tidak valid!",
+		]);
+		$this->form_validation->set_rules('password', 'Password', 'required|trim|min_length[8]|matches[confirm_password]', [
+			'matches' => "Password tidak sama!",
+		]);
+		$this->form_validation->set_rules('confirm_password', 'Confirm Password', 'required|trim|matches[password]', [
+			'matches' => "Password tidak sama!",
+		]);
 
 		if ($this->form_validation->run() == FALSE) {
 			$this->load->view('layouts/auth_header', $data);
@@ -123,7 +129,7 @@ class Auth extends CI_Controller
 		$user_token = [
 			'email' => $email,
 			'token' => $token,
-			'date_created' => time()
+			'created_at' => date('Y-m-d H:i:s', time())
 		];
 
 		$this->auth->insertToken($user_token);
@@ -143,7 +149,7 @@ class Auth extends CI_Controller
 	}
 
 	private function _sendEmail($token, $type)
-	{ 
+	{
 		$config = [
 			'protocol' => 'smtp',
 			'smtp_host' => 'ssl://smtp.googlemail.com',
@@ -178,23 +184,24 @@ class Auth extends CI_Controller
 	}
 
 	public function verify()
-	{ 
+	{
 		$email = $this->input->get('email');
 		$token = $this->input->get('token');
 
-		$user = $this->auth->getUser($email);
+		$user = $this->auth->getUser(['email' => $email]);
 
 		if ($user) {
 			$user_token = $this->auth->getToken($token);
 
 			if ($user_token) {
-				if (time() - $user_token['created_at'] < (60 * 60 * 24)) {
+				// die(print_r($user_	token));
+				if (time() - strtotime($user_token->created_at) < (60 * 60 * 24)) {
 					$this->auth->activatedUser($email);
 					$this->auth->deleteToken($email);
 
 					$this->session->set_userdata('verified_email', $email);
-					$this->session->set_flashdata('message', '<div class="alert alert-success">Congratulation! your account has been created ' . $email . ' has been activated. Please Insert User details!</div>');
-					redirect('auth/userdetail');
+					$this->session->set_flashdata('message', '<div class="alert alert-success">Congratulation! your account has been created ' . $email . ' has been activated</div>');
+					redirect('home');
 				} else {
 					$this->auth->deleteUser($email);
 					$this->auth->deleteToken($email);
@@ -213,7 +220,7 @@ class Auth extends CI_Controller
 	}
 
 	public function forgotPassword()
-	{ 
+	{
 		if ($this->session->userdata('email')) {
 			redirect('user');
 		}
@@ -245,7 +252,7 @@ class Auth extends CI_Controller
 	}
 
 	public function resetPassword()
-	{ 
+	{
 		$email = $this->input->get('email');
 		$token = $this->input->get('token');
 
@@ -268,7 +275,7 @@ class Auth extends CI_Controller
 	}
 
 	public function changePassword()
-	{ 
+	{
 		if (!$this->session->userdata('reset_email')) {
 			redirect('auth');
 		}
@@ -305,7 +312,7 @@ class Auth extends CI_Controller
 	}
 
 	public function blocked()
-	{ 
+	{
 		$data['title'] = "403 Access Blocked";
 		$this->load->view('layouts/header', $data);
 		$this->load->view('auth/blocked', $data);
