@@ -2,7 +2,7 @@
 
 ## Spesifications
 
-- [ ] Login + Logout
+- [x] Login + Logout
 - [ ] CRUD Kandidat
 - [ ] CRUD Pemilih
 - [ ] CRUD Pemilihan
@@ -28,15 +28,17 @@ jika sudah memilih maka user tidak bisa mengganti opsi pemilihannya, dan tidak b
 
 jika pemilihan sudah berakhir maka user akan diberi notifikasi bahwa pemilihan telah berakhir, dan bisa melihat hasil keseluruhannya.
 
-## Routes
+---
 
+## Routes
+### General
 - [ ] /home
 - [x] /auth/login
 - [x] /auth/signup
 - [x] /auth/verify
-- [ ] /auth/forgotPassword
-- [ ] /auth/changePassword
-
+- [x] /auth/forgotPassword
+- [x] /auth/changePassword
+### Elections
 - [ ] /elections
 - [ ] /elections/:id
 - [ ] /elections/create
@@ -44,11 +46,31 @@ jika pemilihan sudah berakhir maka user akan diberi notifikasi bahwa pemilihan t
 - [ ] /elections/:id/update
 - [ ] /elections/:id/stats
 - [ ] /elections/:id/report
-
+- [ ] /elections/:id/export
+- [ ] /elections/export
+### Candidate
+- [ ] /candidate
+- [ ] /candidate/:id
+- [ ] /candidate/:id/create
+- [ ] /candidate/:id/delete
+- [ ] /candidate/:id/update
+- [ ] /candidate/:id/export
+- [ ] /candidate/export
+### User
+- [ ] /users
+- [ ] /users/:id
+- [ ] /users/create
+- [ ] /users/:id/delete
+- [ ] /users/:id/update
+- [ ] /users/feedback
+- [ ] /users/export
+- [ ] /users/import
+### Admin
 - [ ] /admin
 - [ ] /admin/settings
 - [ ] /admin/feedbacks
-
-- [ ] /user
-- [ ] /user/feedback
-- [ ] /user/profile
+### Member
+- [ ] /member
+- [ ] /member/histories
+- [ ] /member/settings
+- [ ] /member/profile

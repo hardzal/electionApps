@@ -9,7 +9,9 @@ class Admin extends CI_Controller
 
 	public function index()
 	{
-		echo "Hello, Admin?";
-		echo "<a href='" . base_url('auth/logout') . "'>Logout</a>";
+		$data['title'] = "Admin Dashboard";
+		$this->load->view('layouts/dashboard_header', $data);
+		$this->load->view('admin/index');
+		$this->load->view('layouts/dashboard_footer');
 	}
 }

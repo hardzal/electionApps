@@ -2,6 +2,8 @@
 
 class Auth_Model extends CI_Model
 {
+	private const TABLE_NAME = ['users', 'user_details', 'user_token'];
+
 	public function checkUser($nim)
 	{
 		return $this->db->get_where('users', ['nim' => $nim])->row_object();
@@ -58,6 +60,17 @@ class Auth_Model extends CI_Model
 		return $user;
 	}
 
+	public function changePassword($password, $email)
+	{
+		$this->db->set('password', $password);
+		$this->db->where('email', $email);
+		$this->db->update('users');
+
+		return $this->db->affected_rows();
+	}
+
+	// user_token table
+
 	public function insertToken($user_token)
 	{
 		$this->db->insert('user_token', $user_token);
@@ -73,14 +86,6 @@ class Auth_Model extends CI_Model
 	public function deleteToken($email)
 	{
 		$this->db->delete('user_token', ['email' => $email]);
-		return $this->db->affected_rows();
-	}
-
-	public function changePassword($password, $email) {
-		$this->db->set('password', $password);
-		$this->db->where('email', $email);
-		$this->db->update('users');
-
 		return $this->db->affected_rows();
 	}
 }
