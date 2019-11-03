@@ -8,7 +8,7 @@
 						<h4 class="text-dark font-weight-normal"><span class="font-weight-bold">Pemilihan Ketua Himatif</span></h4>
 						<p class="text-grey">Sebelum memilih, kamu harus login terlebih dahulu.</p>
 
-						<?= $this->session->flashdata('message'); ?>
+						<?=$this->session->flashdata('message'); ?>
 
 						<form method="POST" action="" class="needs-validation">
 							<div class="form-group">
@@ -40,7 +40,7 @@
 						</form>
 
 						<div class="text-center mt-5 text-small">
-							Hak Cipta &copy;Himatif <?= date('Y'); ?>.
+							Hak Cipta &copy;Stisla <?= date('Y'); ?>.
 							<div class="mt-2">
 								<a class="text-info" href="#">Privacy Policy</a>
 								<div class="bullet"></div>

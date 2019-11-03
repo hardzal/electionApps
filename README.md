@@ -33,7 +33,7 @@ jika pemilihan sudah berakhir maka user akan diberi notifikasi bahwa pemilihan t
 - [ ] /home
 - [x] /auth/login
 - [x] /auth/signup
-- [ ] /auth/verify
+- [x] /auth/verify
 - [ ] /auth/forgotPassword
 - [ ] /auth/changePassword
 

@@ -75,4 +75,12 @@ class Auth_Model extends CI_Model
 		$this->db->delete('user_token', ['email' => $email]);
 		return $this->db->affected_rows();
 	}
+
+	public function changePassword($password, $email) {
+		$this->db->set('password', $password);
+		$this->db->where('email', $email);
+		$this->db->update('users');
+
+		return $this->db->affected_rows();
+	}
 }
