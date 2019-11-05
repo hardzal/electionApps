@@ -32,7 +32,8 @@ class Auth extends CI_Controller
 		}
 	}
 
-	public function login() {
+	public function login()
+	{
 		redirect('auth');
 	}
 
@@ -41,12 +42,13 @@ class Auth extends CI_Controller
 		$nim = $this->input->post('nim', true);
 		$password = $this->input->post('password', true);
 
-		$user = $this->auth->checkUser($nim);
+		$user = $this->auth->getUser(['nim' => $nim]);
 
 		if ($user) {
 			if ($user->is_active) {
 				if (password_verify($password, $user->password)) {
 					$data = [
+						'id' => $user->id,
 						'nim' => $user->nim,
 						'role_id' => $user->role_id
 					];
@@ -141,7 +143,8 @@ class Auth extends CI_Controller
 			redirect('auth/signup');
 		}
 	}
-	private function userToken($email, $token) {
+	private function userToken($email, $token)
+	{
 		$user_token = [
 			'email' => $email,
 			'token' => $token,
@@ -151,9 +154,10 @@ class Auth extends CI_Controller
 		return $user_token;
 	}
 
-	private function getToken() {
+	private function getToken()
+	{
 		return base64_encode(random_bytes(32));
-	}	
+	}
 
 	private function _sendEmail($token, $type)
 	{
@@ -242,7 +246,7 @@ class Auth extends CI_Controller
 			$this->load->view('layouts/auth_footer');
 		} else {
 			$email = $this->input->post('email', true);
-			
+
 			if ($this->auth->checkActiveEmail($email)) {
 				$user_token = $this->userToken($email, $this->getToken());
 				$this->auth->insertToken($user_token);
@@ -267,7 +271,7 @@ class Auth extends CI_Controller
 
 		if ($user) {
 			$user_token = $this->auth->getToken($token);
-			
+
 			if ($user_token) {
 				$this->session->set_userdata('reset_email', $email);
 				$this->changePassword();

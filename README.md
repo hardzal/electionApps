@@ -53,7 +53,7 @@ jika pemilihan sudah berakhir maka user akan diberi notifikasi bahwa pemilihan t
 - [ ] /candidate/:id
 - [ ] /candidate/:id/create
 - [ ] /candidate/:id/delete
-- [ ] /candidate/:id/update
+- [ ] /candidate/:id/edit
 - [ ] /candidate/:id/export
 - [ ] /candidate/export
 ### User
@@ -61,16 +61,16 @@ jika pemilihan sudah berakhir maka user akan diberi notifikasi bahwa pemilihan t
 - [ ] /users/:id
 - [ ] /users/create
 - [ ] /users/:id/delete
-- [ ] /users/:id/update
+- [ ] /users/:id/edit
 - [ ] /users/feedback
 - [ ] /users/export
 - [ ] /users/import
 ### Admin
 - [ ] /admin
 - [ ] /admin/settings
-- [ ] /admin/feedbacks
+- [ ] /admin/logs
 ### Member
 - [ ] /member
-- [ ] /member/histories
 - [ ] /member/settings
 - [ ] /member/profile
+- [ ] /member/logs

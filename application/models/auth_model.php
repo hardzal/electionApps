@@ -4,14 +4,11 @@ class Auth_Model extends CI_Model
 {
 	private const TABLE_NAME = ['users', 'user_details', 'user_token'];
 
-	public function checkUser($nim)
-	{
-		return $this->db->get_where('users', ['nim' => $nim])->row_object();
-	}
+	// users table
 
 	public function getUser($data)
 	{
-		return $this->db->get_where('users', $data)->row_object();
+		return $this->db->get_where($this::TABLE_NAME[0], $data)->row_object();
 	}
 
 	public function deleteUser($email)
@@ -19,6 +16,15 @@ class Auth_Model extends CI_Model
 		$this->db->delete('users', ['email' => $email]);
 		return $this->db->affected_rows();
 	}
+
+	// user_details table
+
+	public function getUserDetails($data)
+	{
+		return $this->db->get_where($this::TABLE_NAME[1], $data)->row_object();
+	}
+
+	// Auth model 
 
 	public function signupUser($data)
 	{

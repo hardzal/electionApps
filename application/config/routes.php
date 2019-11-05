@@ -55,5 +55,9 @@ $route['translate_uri_dashes'] = FALSE;
 
 // custom routes
 $route['elections'] = 'election';
+
 $route['candidates'] = 'candidate';
+
 $route['users'] = 'user';
+$route['user/(:num)'] = 'users/detail/$1';
+$route['user/(:num)/details'] = 'users/detail/$1';
