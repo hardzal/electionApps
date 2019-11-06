@@ -15,7 +15,10 @@
 					<div class="col-12">
 						<div class="card">
 							<div class="card-header">
-								<h4>Users List</h4>
+								<h4><?= $title; ?></h4>
+							</div>
+							<div class="tombol">
+								<a href='<?= base_url(); ?>/user/create' class="btn btn-primary">Tambah User</a>
 							</div>
 							<div class="card-body">
 								<div class="table-responsive">
@@ -45,9 +48,9 @@
 													<td><?= getUserRole($user->role_id); ?></td>
 													<td><?= isUserActive($user->id, $user->is_active); ?></td>
 													<td>
-														<a href="<?= base_url('user') . $user->id . "/details"; ?>" class="btn btn-primary"><i class="fas fa-info-circle"></i></a>
-														<a href="<?= base_url('user') . $user->id . "/edit"; ?>" class="btn btn-success"><i class="far fa-edit"></i></a>
-														<a href="<?= base_url('user') . $user->id . "/delete"; ?>" class="btn btn-danger"><i class="far fa-trash-alt"></i></a>
+														<a href="<?= base_url('user/') . $user->id . "/details"; ?>" class="btn btn-primary"><i class="fas fa-info-circle"></i></a>
+														<a href="<?= base_url('user/') . $user->id . "/edit"; ?>" class="btn btn-success"><i class="far fa-edit"></i></a>
+														<a class="hapus btn btn-danger" data-id="<?= $user->id; ?>"><i class="far fa-trash-alt"></i></button>
 													</td>
 												</tr>
 											<?php endforeach; ?>

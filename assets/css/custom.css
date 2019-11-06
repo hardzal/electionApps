@@ -6,3 +6,11 @@
  */
 
 /*# sourceMappingURL=custom.css.map */
+.hapus {
+	color: white !important;
+	cursor: pointer;
+}
+
+.tombol {
+	margin-left: 30px;
+}

@@ -23,9 +23,6 @@ class Admin extends CI_Controller
 	public function settings()
 	{ }
 
-	public function feedbacks()
-	{ }
-
 	public function logs()
 	{ }
 }
