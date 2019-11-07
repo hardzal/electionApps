@@ -18,7 +18,39 @@
 								<h4><?= $title; ?></h4>
 							</div>
 							<div class="card-body">
-								
+								<form method="POST" action="">
+									<div class="form-group">
+										<label for="nim">NIM</label>
+										<input class="form-control" name="nim" type="text" maxlength="10" />
+									</div>
+									<div class="form-group">
+										<label for="nama">Nama</label>
+										<input class="form-control" name="nama" type="text" />
+									</div>
+									<div class="form-group">
+										<label for="email">Email</label>
+										<input class="form-control" name="email" type="email" />
+									</div>
+									<div class="form-group">
+										<label for="email">No Hp</label>
+										<input class="form-control" name="hp" type="text" maxlength="12" />
+									</div>
+									<div class="form-group">
+										<label for="password">Password</label>
+										<input class="form-control" name="password" type="password" />
+									</div>
+									<div class="form-group">
+										<label for="role">Role</label>
+										<select class="form-control" name="role_id">
+											<?php foreach ($roles as $role) : ?>
+												<option value="<?= $role->id; ?>" style="text-transform: capitalize;"><?= $role->role; ?></option>
+											<?php endforeach; ?>
+										</select>
+									</div>
+									<div class="form-group">
+										<input type='submit' name='submit' value='Simpan' class='btn btn-primary' />
+									</div>
+								</form>
 							</div>
 						</div>
 					</div>

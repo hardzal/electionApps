@@ -59,7 +59,8 @@ $route['elections'] = 'election';
 $route['candidates'] = 'candidate';
 
 $route['users'] = 'user';
-$route['user/(:any)'] = 'users/detail/$1';
-$route['user/(:any)/details'] = 'users/detail/$1';
-$route['user/(:any)/edit'] = 'users/edit/$1';
-$route['user/(:any)/delete'] = 'users/delete/$1';
+$route['user/create'] = 'user/create';
+$route['user/(:any)'] = 'user/detail/$1';
+$route['user/(:any)/details'] = 'user/detail/$1';
+$route['user/(:any)/edit'] = 'user/edit/$1';
+$route['user/(:any)/delete'] = 'user/delete/$1';

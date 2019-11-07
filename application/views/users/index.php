@@ -40,7 +40,7 @@
 											<?php
 											$no = 1;
 											foreach ($users as $user) : ?>
-												<tr>
+												<tr class="user-row">
 													<td><?= $no++; ?></td>
 													<td><?= $user->name; ?></td>
 													<td><?= $user->nim; ?></td>
@@ -64,3 +64,6 @@
 			</div>
 		</section>
 	</div>
+
+
+	

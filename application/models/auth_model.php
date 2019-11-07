@@ -40,11 +40,15 @@ class Auth_Model extends CI_Model
 		];
 
 		$this->db->insert('user_details', $user_detail);
+		$this->db->trans_complete();
 
 		if ($this->db->trans_status() == FALSE) {
 			$this->db->trans_rollback();
+			return false;
 		}
-		return $this->db->trans_complete();;
+
+		$this->db->trans_commit();
+		return $this->db->affected_rows();
 	}
 
 	public function activatedUser($email)

@@ -4,6 +4,11 @@ class User_Model extends CI_Model
 {
 	private const TABLE_NAME = 'users';
 
+	public function __construct()
+	{
+		$this->load->model('UserDetail_Model', 'userDetail');
+	}
+
 	public function getUsers()
 	{
 		return $this->db
@@ -26,7 +31,27 @@ class User_Model extends CI_Model
 	}
 
 	public function create($data)
-	{ }
+	{
+		$this->db->trans_start();
+
+		// user insert
+		$this->db->insert($this::TABLE_NAME, $data['user']);
+		$user_id = $this->db->insert_id();
+		$data['userdetail']['user_id'] = $user_id;
+
+		// user_detail insert
+		$this->userDetail->create($data['userdetail']);
+
+		$this->db->trans_complete();
+
+		if ($this->db->trans_status() == false) {
+			$this->db->trans_rollback();
+			return false;
+		}
+
+		$this->db->trans_commit();
+		return $this->db->affected_rows();
+	}
 
 	public function update($data)
 	{ }
