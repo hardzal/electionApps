@@ -16,6 +16,7 @@
 						<div class="card">
 							<div class="card-header">
 								<h4><?= $title; ?></h4>
+								<?= $this->session->flashdata('message'); ?>
 							</div>
 							<div class="tombol">
 								<a href='<?= base_url(); ?>/user/create' class="btn btn-primary">Tambah User</a>
@@ -48,9 +49,9 @@
 													<td><?= getUserRole($user->role_id); ?></td>
 													<td><?= isUserActive($user->id, $user->is_active); ?></td>
 													<td>
-														<a href="<?= base_url('user/') . $user->id . "/details"; ?>" class="btn btn-primary"><i class="fas fa-info-circle"></i></a>
+														<a href="<?= base_url('user/') . $user->id . "/details"; ?>" class="detail btn btn-primary" data-toggle="modal" data-target="#detailModal"><i class="fas fa-info-circle"></i></a>
 														<a href="<?= base_url('user/') . $user->id . "/edit"; ?>" class="btn btn-success"><i class="far fa-edit"></i></a>
-														<a class="hapus btn btn-danger" data-id="<?= $user->id; ?>"><i class="far fa-trash-alt"></i></button>
+														<a data-id="<?= $user->id; ?>" class="hapus btn btn-danger"><i class="far fa-trash-alt"></i></button>
 													</td>
 												</tr>
 											<?php endforeach; ?>
@@ -65,5 +66,22 @@
 		</section>
 	</div>
 
-
-	
+	<div class="modal fade" tabindex="-1" role="dialog" id="detailModal">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Detail User</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					
+				</div>
+				<div class="modal-footer bg-whitesmoke br">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary">Save changes</button>
+				</div>
+			</div>
+		</div>
+	</div>
