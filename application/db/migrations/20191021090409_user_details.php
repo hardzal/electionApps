@@ -31,8 +31,6 @@ class Migration_user_details extends CI_Migration
 		));
 		$this->dbforge->add_key('id', TRUE);
 		$this->dbforge->add_field('CONSTRAINT `fk_user_id` FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE');
-		$this->dbforge->add_field('CONSTRAINT `fk_major_id` FOREIGN KEY (major_id) REFERENCES majors(id) ON DELETE CASCADE');
-		$this->dbforge->add_field('CONSTRAINT `fk_generation_id` FOREIGN KEY (generation_id) REFERENCES generations(id) ON DELETE CASCADE');
 		$this->dbforge->create_table('user_details');
 	}
 	public function down()

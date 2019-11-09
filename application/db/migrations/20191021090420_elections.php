@@ -37,8 +37,6 @@ class Migration_elections extends CI_Migration
 			),
 		));
 		$this->dbforge->add_key('id', TRUE);
-		$this->dbforge->add_field('CONSTRAINT `fk_election_major_id` FOREIGN KEY (major_id) REFERENCES majors(id) ON DELETE CASCADE');
-		$this->dbforge->add_field('CONSTRAINT `fk_election_generation_id` FOREIGN KEY (generation_id) REFERENCES generations(id) ON DELETE CASCADE');
 		$this->dbforge->create_table('elections');
 	}
 	public function down()
