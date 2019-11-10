@@ -15,45 +15,53 @@
 					<div class="col-12">
 						<div class="card">
 							<div class="card-header">
-								<h4>Users List</h4>
+								<h4><?= $title; ?></h4>
+								<?= $this->session->flashdata('message'); ?>
 							</div>
 							<div class="card-body">
-								<div class="table-responsive">
-									<table class="table table-striped" id="table-1">
-										<thead>
-											<tr>
-												<th class="text-center">
-													#
-												</th>
-												<th>Nama</th>
-												<th>NIM</th>
-												<th>Email</th>
-												<th>Role</th>
-												<th>Status</th>
-												<th>Action</th>
-											</tr>
-										</thead>
-										<tbody>
-											<?php
-											$no = 1;
-											foreach ($users as $user) : ?>
-												<tr>
-													<td><?= $no++; ?></td>
-													<td><?= $user->name; ?></td>
-													<td><?= $user->nim; ?></td>
-													<td><?= $user->email; ?></td>
-													<td><?= getUserRole($user->role_id); ?></td>
-													<td><?= isUserActive($user->id, $user->is_active); ?></td>
-													<td>
-														<a href="<?= base_url('user/') . $user->id . "/details"; ?>" class="btn btn-primary"><i class="fas fa-info-circle"></i></a>
-														<a href="<?= base_url('user/') . $user->id . "/edit"; ?>" class="btn btn-success"><i class="far fa-edit"></i></a>
-														<a href="<?= base_url('user/') . $user->id . "/delete"; ?>" class="btn btn-danger"><i class="far fa-trash-alt"></i></a>
-													</td>
-												</tr>
-											<?php endforeach; ?>
-										</tbody>
-									</table>
-								</div>
+								<form method="POST" action="">
+									<div class="form-group">
+										<label for="nim">NIM</label>
+										<input class="form-control" name="nim" type="text" maxlength="10" value="<?= $user->nim; ?>" />
+									</div>
+									<div class="form-group">
+										<label for="nama">Nama</label>
+										<input class="form-control" name="nama" type="text" value="<?= $user->detail->name; ?>" />
+									</div>
+									<div class="form-group">
+										<label for="email">Email</label>
+										<input class="form-control" name="email" type="email" value="<?= $user->email; ?>" />
+									</div>
+									<div class="form-group">
+										<label for="email">No Hp</label>
+										<input class="form-control" name="hp" type="text" maxlength="12" value="<?= $user->detail->hp; ?>" />
+									</div>
+									<div class="form-group">
+										<label for="password">Password</label>
+										<input class="form-control" name="password" type="password" />
+										<input type="hidden" name="password_current" value="<?= $user->password; ?>" />
+									</div>
+									<div class="form-group">
+										<label for="role">Role</label>
+										<select class="form-control" name="role_id">
+											<?php if (isset($roles)) : foreach ($roles as $role) : ?>
+													<?php
+															if ($role->id == $user->role_id) {
+																$selected = "selected";
+															} else {
+																$selected = "";
+															};
+															?>
+													<option value="<?= $role->id; ?>" style="text-transform: capitalize;" <?= $selected; ?>><?= $role->role; ?></option>
+											<?php endforeach;
+											endif; ?>
+										</select>
+									</div>
+									<div class="form-group">
+										<input type='hidden' name='user_id' value='<?= $user->id; ?>' />
+										<input type='submit' name='submit' value='Simpan' class='btn btn-primary' />
+									</div>
+								</form>
 							</div>
 						</div>
 					</div>

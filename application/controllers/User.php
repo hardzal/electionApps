@@ -8,6 +8,7 @@ class User extends CI_Controller
 		is_logged_in();
 		$this->load->model("Auth_Model", "auth");
 		$this->load->model("User_Model", "user");
+		$this->load->model("Role_Model", "role");
 	}
 
 	public function index()
@@ -44,24 +45,49 @@ class User extends CI_Controller
 			$this->load->view('users/create', $data);
 			$this->load->view('layouts/dashboard_footer');
 		} else {
-			if ($this->addUser()) {
+			if ($this->inputUser('create')) {
 				$this->session->set_flashdata('message', "<script>alert('Berhasil menambahkan user!');</script>");
+				redirect('users');
 			} else {
 				$this->session->set_flashdata('message', "<script>alert('Gagal menambahkan user!!!');</script>");
+				redirect('user/create');
 			}
-
-			redirect('users');
 		}
 	}
 
-	private function addUser()
+	private function processUser($option, $data, $user_id = null)
 	{
+		$result = false;
+
+		if ($option == 'create') {
+			$result = $this->user->create($data);
+		} else if ($option == 'update') {
+			$result = $this->user->update($data, $user_id);
+		}
+
+		return $result;
+	}
+
+	private function inputUser($proses)
+	{
+		if ($this->input->post('user_id')) {
+			$user_id = $this->input->post('user_id');
+		} else {
+			$user_id = null;
+		}
+
 		$nama = $this->input->post('nama', true);
 		$email = $this->input->post('email', true);
 		$nim = $this->input->post('nim', true);
 		$hp = $this->input->post('hp', true);
-		$password = $this->input->post('password', true);
-		$password = password_hash($password, PASSWORD_DEFAULT);
+
+		if ($this->input->post('password')) {
+			$password = $this->input->post('password', true);
+			$password = password_hash($password, PASSWORD_DEFAULT);
+		} else {
+			$password = $this->input->post('password_current');
+		}
+
 		$role_id = $this->input->post('role_id', true);
 
 		$user = array(
@@ -78,22 +104,42 @@ class User extends CI_Controller
 			]
 		);
 
-		if ($this->user->create($user)) {
-			return true;
-		}
-
-		return false;
+		return $this->processUser($proses, $user, $user_id);
 	}
 
 	public function edit($id)
 	{
-		$data['title'] = "Menambahkan User";
+		$data['title'] = "Memperbaharui User";
 		$data['user_data'] = getUserData();
 
-		$this->load->view('layouts/dashboard_header', $data);
-		$this->load->view('layouts/dashboard_sidebar', $data);
-		$this->load->view('users/create', $data);
-		$this->load->view('layouts/dashboard_footer', $data);
+		// class object
+		// $user = new stdClass();
+		$user = $this->user->getUser(['id' => $id]);
+		$user->detail = $this->userDetail->getUserDetail(['user_id' => $id]);
+
+		$data['user'] = $user;
+		$data['roles'] = $this->role->getRoles();
+
+		$this->form_validation->set_rules('nama', 'required|trim|alpha');
+		$this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email');
+		$this->form_validation->set_rules('nim', 'NIM', 'required|trim|numeric');
+		$this->form_validation->set_rules('hp', 'No Hp', 'numeric');
+		$this->form_validation->set_rules('role_id', 'Role', 'required');
+
+		if ($this->form_validation->run() == FALSE) {
+			$this->load->view('layouts/dashboard_header', $data);
+			$this->load->view('layouts/dashboard_sidebar', $data);
+			$this->load->view('users/edit', $data);
+			$this->load->view('layouts/dashboard_footer', $data);
+		} else {
+			if ($this->inputUser('update')) {
+				$this->session->set_flashdata('message', "<script>alert('Berhasil memperbaharui user!');</script>");
+				redirect('users');
+			} else {
+				$this->session->set_flashdata('message', "<script>alert('Gagal memperbaharui user!');</script>");
+				redirect('user/' . $id . '/edit');
+			}
+		}
 	}
 
 	public function delete($id = null)

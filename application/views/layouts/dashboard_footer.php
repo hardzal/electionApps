@@ -26,6 +26,11 @@
 
 <script src="<?= base_url(); ?>node_modules/sweetalert/dist/sweetalert.min.js"></script>
 
+<!-- JS Libraies -->
+<script src="<?= base_url(); ?>node_modules/datatables/media/js/jquery.dataTables.min.js"></script>
+<script src="<?= base_url(); ?>node_modules/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="<?= base_url(); ?>node_modules/datatables.net-select-bs4/js/select.bootstrap4.min.js"></script>
+
 <!-- Template JS File -->
 <script src="<?= base_url(); ?>assets/js/scripts.js"></script>
 <script src="<?= base_url(); ?>assets/js/custom.js"></script>

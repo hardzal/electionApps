@@ -7,6 +7,7 @@
 const base_url = "http://localhost/projects/pemilihan_ci/";
 // "use strict";
 
+// deleting user
 $('.hapus').click(function () {
 	// add class to parent
 	$(this).parent().parent().addClass('user-delete');
@@ -48,4 +49,15 @@ $('.hapus').click(function () {
 			console.log(err);
 		});
 	return false;
+});
+
+
+// datatables
+"use strict";
+
+$("#table-1").dataTable({
+	"columnDefs": [{
+		"sortable": false,
+		"targets": [2, 3]
+	}]
 });

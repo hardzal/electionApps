@@ -48,7 +48,7 @@ class Auth_Model extends CI_Model
 		}
 
 		$this->db->trans_commit();
-		return $this->db->affected_rows();
+		return true;
 	}
 
 	public function activatedUser($email)

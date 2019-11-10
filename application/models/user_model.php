@@ -50,11 +50,26 @@ class User_Model extends CI_Model
 		}
 
 		$this->db->trans_commit();
-		return $this->db->affected_rows();
+		return true;
 	}
 
-	public function update($data)
-	{ }
+	public function update($data, $user_id)
+	{
+		$this->db->trans_start();
+
+		$this->db->update($this::TABLE_NAME, $data['user'], ['id' => $user_id]);
+		$this->userDetail->update($data['userdetail'], $user_id);
+
+		$this->db->trans_complete();
+
+		if ($this->db->trans_status() == false) {
+			$this->db->trans_rollback();
+			return false;
+		}
+
+		$this->db->trans_commit();
+		return true;
+	}
 
 	public function delete($id)
 	{

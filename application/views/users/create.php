@@ -16,6 +16,7 @@
 						<div class="card">
 							<div class="card-header">
 								<h4><?= $title; ?></h4>
+								<?= $this->session->flashdata('message'); ?>
 							</div>
 							<div class="card-body">
 								<form method="POST" action="">
@@ -42,9 +43,10 @@
 									<div class="form-group">
 										<label for="role">Role</label>
 										<select class="form-control" name="role_id">
-											<?php foreach ($roles as $role) : ?>
-												<option value="<?= $role->id; ?>" style="text-transform: capitalize;"><?= $role->role; ?></option>
-											<?php endforeach; ?>
+											<?php if (isset($roles)) : foreach ($roles as $role) : ?>
+													<option value="<?= $role->id; ?>" style="text-transform: capitalize;"><?= $role->role; ?></option>
+											<?php endforeach;
+											endif; ?>
 										</select>
 									</div>
 									<div class="form-group">
