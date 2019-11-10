@@ -3,6 +3,7 @@
 ## Spesifications
 
 - [x] Login + Logout
+- [x] CRUD User
 - [ ] CRUD Kandidat
 - [ ] CRUD Pemilih
 - [ ] CRUD Pemilihan
@@ -10,7 +11,7 @@
 - [ ] Statistik Pemilihan
 - [ ] Notification Pemilihan
 - [ ] Logs Activity
-
+- [ ] Drag and Drop 
 ---
 
 ## Flow
@@ -38,37 +39,42 @@ jika pemilihan sudah berakhir maka user akan diberi notifikasi bahwa pemilihan t
 - [x] /auth/verify
 - [x] /auth/forgotPassword
 - [x] /auth/changePassword
+---
 ### Elections
 - [ ] /elections
-- [ ] /elections/:id
-- [ ] /elections/create
-- [ ] /elections/:id/delete
-- [ ] /elections/:id/update
-- [ ] /elections/:id/stats
-- [ ] /elections/:id/report
-- [ ] /elections/:id/export
+- [ ] /election/create
+- [ ] /election/:id/details
+- [ ] /election/:id/delete
+- [ ] /election/:id/update
+- [ ] /election/:id/stats
+- [ ] /election/:id/report
+- [ ] /election/:id/export
 - [ ] /elections/export
+- [ ] /elections/histories
+---
 ### Candidate
-- [ ] /candidate
-- [ ] /candidate/:id
-- [ ] /candidate/:id/create
+- [ ] /candidates
+- [ ] /candidate/create
 - [ ] /candidate/:id/delete
 - [ ] /candidate/:id/edit
 - [ ] /candidate/:id/export
-- [ ] /candidate/export
+- [ ] /candidates/export
+---
 ### User
-- [ ] /users
-- [ ] /users/:id
-- [ ] /users/create
-- [ ] /users/:id/delete
-- [ ] /users/:id/edit
+- [x] /users
+- [ ] /user/:id
+- [x] /user/create
+- [x] /user/:id/delete
+- [x] /user/:id/edit
 - [ ] /users/feedback
 - [ ] /users/export
 - [ ] /users/import
+---
 ### Admin
-- [ ] /admin
+- [x] /admin
 - [ ] /admin/settings
 - [ ] /admin/logs
+---
 ### Member
 - [ ] /member
 - [ ] /member/settings

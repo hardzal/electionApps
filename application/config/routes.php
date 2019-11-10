@@ -53,14 +53,30 @@ $route['default_controller'] = 'auth';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
-// custom routes
+# custom routes
+
+// election routes
 $route['elections'] = 'election';
+$route['election/(:num)/details'] = 'election/detail/$1';
+$route['election/(:num)/delete'] = 'election/delete/$1';
+$route['election/(:num)/stats'] = 'election/stats/$1';
+$route['election/(:num)/report'] = 'election/report/$1';
+$route['election/(:num)/export'] = 'election/export/$1';
+$route['elections/export'] = 'election/export';
+$route['elections/histories'] = 'election/histories';
 
+// candidate routes
 $route['candidates'] = 'candidate';
+$route['candidate/:id/details'] = 'candidate/detail/$1';
+$route['candidate/:id/delete'] = 'candidate/delete/$1';
+$route['candidate/:id/edit'] = 'candidate/edit/$1';
+$route['candidate/:id/export'] = 'candidate/export/$1';
+$route['candidates/export'] = 'candidate/export';
 
+// user routes
 $route['users'] = 'user';
 $route['user/create'] = 'user/create';
-$route['user/(:any)'] = 'user/detail/$1';
-$route['user/(:any)/details'] = 'user/detail/$1';
-$route['user/(:any)/edit'] = 'user/edit/$1';
-$route['user/(:any)/delete'] = 'user/delete/$1';
+$route['user/(:num)'] = 'user/detail/$1';
+$route['user/(:num)/details'] = 'user/detail/$1';
+$route['user/(:num)/edit'] = 'user/edit/$1';
+$route['user/(:num)/delete'] = 'user/delete/$1';

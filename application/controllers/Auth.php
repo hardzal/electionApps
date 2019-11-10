@@ -90,7 +90,7 @@ class Auth extends CI_Controller
 		// validation
 		$this->form_validation->set_rules('nama', 'Nama', 'required|trim');
 		$this->form_validation->set_rules('hp', 'No HP', 'required|trim|max_length[15]|min_length[12]');
-		$this->form_validation->set_rules('nim', 'NIM', 'required|trim|max_length[9]|min_length[9]');
+		$this->form_validation->set_rules('nim', 'NIM', 'required|trim|max_length[9]|is_unique[users.nim]|min_length[9]');
 		$this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[users.email]', [
 			'is_unique' => "Email sudah terdaftar!",
 			'valid_email' => "Email tidak valid!",
@@ -127,11 +127,11 @@ class Auth extends CI_Controller
 				'hp' => $this->input->post('hp', true),
 			],
 		];
-
-		$this->auth->insertToken($this->userToken($email, $this->getToken()));
+		$user_token = $this->userToken($email, $this->getToken());
+		$this->auth->insertToken($user_token);
 
 		if ($this->auth->signupUser($user)) {
-			if ($this->_sendEmail($this->getToken(), 'verify')) {
+			if ($this->_sendEmail($user_token['token'], 'verify')) {
 				$this->session->set_flashdata('message', '<div class="alert alert-success">Congratulation! your account has been created. Please activate your account!</div>');
 				redirect('auth/login');
 			} else {
@@ -205,14 +205,13 @@ class Auth extends CI_Controller
 			$user_token = $this->auth->getToken($token);
 
 			if ($user_token) {
-				// die(print_r($user_	token));
 				if (time() - strtotime($user_token->created_at) < (60 * 60 * 24)) {
 					$this->auth->activatedUser($email);
 					$this->auth->deleteToken($email);
 
 					$this->session->set_userdata('verified_email', $email);
 					$this->session->set_flashdata('message', '<div class="alert alert-success">Congratulation! your account has been created ' . $email . ' has been activated</div>');
-					redirect('home');
+					redirect('auth/login');
 				} else {
 					$this->auth->deleteUser($email);
 					$this->auth->deleteToken($email);
