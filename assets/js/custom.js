@@ -4,8 +4,9 @@
  * because it will make it harder for you to update.
  *
  */
+"use strict";
+
 const base_url = "http://localhost/projects/pemilihan_ci/";
-// "use strict";
 
 // deleting user
 $('.hapus').click(function () {
@@ -53,10 +54,15 @@ $('.hapus').click(function () {
 
 
 // datatables
-"use strict";
-
 $("#table-1").dataTable({
 	"columnDefs": [{
 		"sortable": false,
+	}]
+});
+
+$("#table-2").dataTable({
+	"columnDefs": [{
+		"sortable": false,
+		"targets": [0, 2, 3]
 	}]
 });

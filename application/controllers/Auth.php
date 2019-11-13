@@ -5,16 +5,14 @@ class Auth extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
+		if ($this->session->userdata('nim')) {
+			redirect('/dashboard');
+		}
 		$this->load->library('form_validation');
-		$this->load->model('Auth_Model', 'auth');
 	}
 
 	public function index()
 	{
-		if ($this->session->userdata('email')) {
-			redirect('home');
-		}
-
 		// Validation
 		$this->form_validation->set_rules('nim', 'Nim', 'required|trim|max_length[10]');
 		$this->form_validation->set_rules('password', 'Password', 'required|min_length[8]');

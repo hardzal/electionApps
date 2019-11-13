@@ -12,6 +12,8 @@
 - [ ] Notification Pemilihan
 - [ ] Logs Activity
 - [ ] Drag and Drop 
+- [ ] Export
+- [ ] Import
 ---
 
 ## Flow
@@ -34,6 +36,7 @@ jika pemilihan sudah berakhir maka user akan diberi notifikasi bahwa pemilihan t
 ## Routes
 ### General
 - [ ] /home
+- [ ] /stats
 - [x] /auth/login
 - [x] /auth/signup
 - [x] /auth/verify
@@ -42,17 +45,17 @@ jika pemilihan sudah berakhir maka user akan diberi notifikasi bahwa pemilihan t
 ---
 ### Elections
 - [ ] /elections
-- [ ] /election/create
-- [ ] /election/:id/details
-- [ ] /election/:id/delete
-- [ ] /election/:id/update
-- [ ] /election/:id/stats
-- [ ] /election/:id/report
-- [ ] /election/:id/export
+- [ ] /admin/election/create
+- [ ] /admin/election/:id/details
+- [ ] /admin/election/:id/delete
+- [ ] /admin/election/:id/update
+- [ ] /admine/lection/:id/stats
+- [ ] /admin/election/:id/report
+- [ ] /admin/election/:id/export
 - [ ] /elections/export
 - [ ] /elections/histories
 ---
-### Candidate
+### Candidat
 - [ ] /candidates
 - [ ] /candidate/create
 - [ ] /candidate/:id/delete
@@ -62,7 +65,7 @@ jika pemilihan sudah berakhir maka user akan diberi notifikasi bahwa pemilihan t
 ---
 ### User
 - [x] /users
-- [ ] /user/:id
+- [ ] /user/:id/details
 - [x] /user/create
 - [x] /user/:id/delete
 - [x] /user/:id/edit
