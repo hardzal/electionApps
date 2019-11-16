@@ -14,6 +14,7 @@ class User extends CI_Controller
 	public function index()
 	{
 		$data['title'] = "Daftar User";
+		$data['title_header'] = "Manajemen User";
 		$data['user_data'] = getUserData();
 
 		$data['users'] = $this->user->getUsers();

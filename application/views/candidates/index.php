@@ -2,7 +2,7 @@
 	<div class="main-content">
 		<section class="section">
 			<div class="section-header">
-				<h1>Users Management</h1>
+				<h1><?= $title_header; ?></h1>
 				<div class="section-header-breadcrumb">
 					<div class="breadcrumb-item active"><a href="#">Management</a></div>
 					<div class="breadcrumb-item"><a href="#">Elections</a></div>
@@ -18,7 +18,7 @@
 								<?= $this->session->flashdata('message'); ?>
 							</div>
 							<div class="tombol">
-								<a href='<?= base_url(); ?>/user/create' class="btn btn-primary">Tambah Candidate</a>
+								<a href='<?= base_url(); ?>admin/candidate/create' class="btn btn-primary">Tambah Candidate</a>
 							</div>
 							<div class="card-body">
 								<div class="table-responsive">
@@ -45,8 +45,8 @@
 														<?= statusBadge($candidate->status); ?>
 													</td>
 													<td>
-														<a href="<?= base_url('user/') . $candidate->id . "/details"; ?>" class="detail btn btn-primary" data-toggle="modal" data-target="#detailModal"><i class="fas fa-info-circle"></i></a>
-														<a href="<?= base_url('user/') . $candidate->id . "/edit"; ?>" class="btn btn-success"><i class="far fa-edit"></i></a>
+														<a href="<?= base_url('admin/candidate/') . $candidate->id . "/details"; ?>" class="detail btn btn-primary" data-toggle="modal" data-target="#detailModal"><i class="fas fa-info-circle"></i></a>
+														<a href="<?= base_url('admin/candidate/') . $candidate->id . "/edit"; ?>" class="btn btn-success"><i class="far fa-edit"></i></a>
 														<a data-id="<?= $candidate->id; ?>" class="hapus btn btn-danger"><i class="far fa-trash-alt"></i></button>
 													</td>
 												</tr>

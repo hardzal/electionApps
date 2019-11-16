@@ -11,7 +11,6 @@
 - [ ] Statistik Pemilihan
 - [ ] Notification Pemilihan
 - [ ] Logs Activity
-- [ ] Drag and Drop 
 - [ ] Export
 - [ ] Import
 ---
@@ -37,6 +36,9 @@ jika pemilihan sudah berakhir maka user akan diberi notifikasi bahwa pemilihan t
 ### General
 - [ ] /home
 - [ ] /stats
+- [ ] /elections
+---
+### Authentication
 - [x] /auth/login
 - [x] /auth/signup
 - [x] /auth/verify
@@ -44,24 +46,24 @@ jika pemilihan sudah berakhir maka user akan diberi notifikasi bahwa pemilihan t
 - [x] /auth/changePassword
 ---
 ### Elections
-- [ ] /elections
+- [ ] /admin/elections
 - [ ] /admin/election/create
 - [ ] /admin/election/:id/details
 - [ ] /admin/election/:id/delete
 - [ ] /admin/election/:id/update
-- [ ] /admine/lection/:id/stats
+- [ ] /admin/election/:id/stats
 - [ ] /admin/election/:id/report
 - [ ] /admin/election/:id/export
 - [ ] /elections/export
 - [ ] /elections/histories
 ---
 ### Candidat
-- [ ] /candidates
-- [ ] /candidate/create
-- [ ] /candidate/:id/delete
-- [ ] /candidate/:id/edit
-- [ ] /candidate/:id/export
-- [ ] /candidates/export
+- [ ] /admin/candidates
+- [ ] /admin/candidate/create
+- [ ] /admin/candidate/:id/delete
+- [ ] /admin/candidate/:id/edit
+- [ ] /admin/candidate/:id/export
+- [ ] /admin/candidates/export
 ---
 ### User
 - [x] /users

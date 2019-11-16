@@ -11,11 +11,11 @@ const base_url = "http://localhost/projects/pemilihan_ci/";
 // deleting user
 $('.hapus').click(function () {
 	// add class to parent
-	$(this).parent().parent().addClass('user-delete');
+	$(this).parent().parent().addClass('delete');
 
 	swal({
 			title: 'Apakah Anda yakin?',
-			text: 'Anda akan menghapus data user, data tidak akan bisa dikembalikan setelah terhapus',
+			text: 'Anda akan menghapus data ini, data tidak akan bisa dikembalikan setelah terhapus',
 			icon: 'warning',
 			buttons: true,
 			dangerMode: true,
@@ -23,10 +23,11 @@ $('.hapus').click(function () {
 		.then((willDelete) => {
 			if (willDelete) {
 				// get id
-				let id = $(this).data('id');
+				const id = $(this).data('id');
+				const link = $(this).data('link');
 
 				$.ajax({
-					url: `${base_url}user/delete/${id}`,
+					url: `${base_url}${link}${id}`,
 					type: "post",
 					data: {
 						id: id
@@ -35,7 +36,7 @@ $('.hapus').click(function () {
 						swal("Data berhasil dihapus", {
 							icon: "success",
 						});
-						$('.user-delete').fadeTo('slow', 0.5, function () {
+						$('.delete').fadeTo('slow', 0.5, function () {
 							$(this).remove();
 						});
 					},
@@ -66,3 +67,14 @@ $("#table-2").dataTable({
 		"targets": [0, 2, 3]
 	}]
 });
+
+$.uploadPreview({
+	input_field: "#image-upload", // Default: .image-upload
+	preview_box: "#image-preview", // Default: .image-preview
+	label_field: "#image-label", // Default: .image-label
+	label_default: "Choose File", // Default: Choose File
+	label_selected: "Change File", // Default: Change File
+	no_label: false, // Default: false
+	success_callback: null // Default: null
+});
+$(".inputtags").tagsinput('items');

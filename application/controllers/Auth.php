@@ -56,9 +56,9 @@ class Auth extends CI_Controller
 
 					// check role
 					if ($user->role_id == 1) {
-						redirect('admin');
+						redirect('dashboard');
 					} else if ($user->role_id == 2) {
-						redirect('candidate');
+						redirect('dashboard/candidate');
 					} else if ($user->role_id == 3) {
 						redirect('member');
 					} else {

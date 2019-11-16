@@ -12,9 +12,19 @@
 	<link rel="stylesheet" href="<?= base_url(); ?>assets/vendor/fontawesome/v5.10.2/css/all.min.css" />
 
 	<!-- CSS Libraries -->
-	<link rel="stylesheet" href="<?= base_url(); ?>node_modules/jqvmap/dist/jqvmap.min.css">
+	<!-- <link rel="stylesheet" href="<?= base_url(); ?>node_modules/jqvmap/dist/jqvmap.min.css">
 	<link rel="stylesheet" href="<?= base_url(); ?>node_modules/weathericons/css/weather-icons.min.css">
 	<link rel="stylesheet" href="<?= base_url(); ?>node_modules/weathericons/css/weather-icons-wind.min.css">
+	<link rel="stylesheet" href="<?= base_url(); ?>node_modules/summernote/dist/summernote-bs4.css">
+	<link rel="stylesheet" href="<?= base_url(); ?>node_modules/bootstrap-timepicker/css/bootstrap-timepicker.min.css">
+	<link rel="stylesheet" href="<?= base_url(); ?>node_modules/bootstrap-tagsinput/dist/bootstrap-tagsinput.css"> -->
+
+	<!-- daterangepicker -->
+	<link rel="stylesheet" href="<?= base_url(); ?>node_modules/bootstrap-daterangepicker/daterangepicker.css">
+	<link rel="stylesheet" href="<?= base_url(); ?>node_modules/select2/dist/css/select2.min.css">
+	<link rel="stylesheet" href="<?= base_url(); ?>node_modules/bootstrap-timepicker/css/bootstrap-timepicker.min.css">
+
+	<!-- summernote -->
 	<link rel="stylesheet" href="<?= base_url(); ?>node_modules/summernote/dist/summernote-bs4.css">
 
 	<!-- DataTables -->

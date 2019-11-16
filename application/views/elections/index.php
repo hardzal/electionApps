@@ -18,7 +18,7 @@
 								<?= $this->session->flashdata('message'); ?>
 							</div>
 							<div class="tombol">
-								<a href='<?= base_url(); ?>/user/create' class="btn btn-primary">Tambah Pemilihan</a>
+								<a href='<?= base_url(); ?>admin/election/create' class="btn btn-primary">Tambah Pemilihan</a>
 							</div>
 							<div class="card-body">
 								<div class="table-responsive">

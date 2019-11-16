@@ -28,7 +28,17 @@ class Election extends CI_Controller
 	{ }
 
 	public function create()
-	{ }
+	{
+		$data['title'] = "Menambahkan Pemilihan";
+		$data['title_header'] = "Manajemen Pemilihan";
+
+		$data['user_data'] = getUserData();
+
+		$this->load->view('layouts/dashboard_header', $data);
+		$this->load->view('layouts/dashboard_sidebar', $data);
+		$this->load->view('elections/create', $data);
+		$this->load->view('layouts/dashboard_footer');
+	}
 
 	public function edit()
 	{ }

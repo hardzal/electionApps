@@ -49,44 +49,44 @@
 						<a href="<?= base_url() . "admin"; ?>">HIMATIF</a>
 					</div>
 					<div class="sidebar-brand sidebar-brand-sm">
-						<a href="<?= base_url() . "admin"; ?>">HM</a>
+						<a href="<?= base_url() . "dashboard"; ?>">HM</a>
 					</div>
 					<ul class="sidebar-menu">
 						<li class="menu-header">Dashboard</li>
 						<li>
-							<a href="#" class="nav-link"><i class="fas fa-fire"></i><span>Dashboard</span></a>
+							<a href="<?= base_url(); ?>dashboard" class="nav-link"><i class="fas fa-fire"></i><span>Dashboard</span></a>
 						</li>
 						<li class="menu-header">Management</li>
 						<li>
-							<a href="<?= base_url() . "elections"; ?>" class="nav-link">
+							<a href="<?= base_url() . "admin/elections"; ?>" class="nav-link">
 								<i class="fas fa-vote-yea"></i><span>Elections</span>
 							</a>
 						</li>
 						<li>
-							<a href="<?= base_url() . "candidates"; ?>" class="nav-link">
+							<a href="<?= base_url() . "admin/candidates"; ?>" class="nav-link">
 								<i class="fas fa-user-tie"></i><span>Candidates</span>
 							</a>
 						</li>
 						<li class="nav-item dropdown">
 							<a href="#" class="nav-link has-dropdown"><i class="fas fa-users"></i><span>Users</span></a>
 							<ul class="dropdown-menu">
-								<li><a href="<?= base_url() . "users"; ?>" class="nav-link"><span>List</span></a></li>
-								<li><a href="<?= base_url() . "users/logs"; ?>" class="nav-link"><span>Logs</span></a></li>
-								<li><a href="<?= base_url() . "users/feedbacks"; ?>" class="nav-link"><span>Feedbacks</span></a></li>
+								<li><a href="<?= base_url() . "admin/users"; ?>" class="nav-link"><span>List</span></a></li>
+								<li><a href="<?= base_url() . "admin/users/logs"; ?>" class="nav-link"><span>Logs</span></a></li>
+								<li><a href="<?= base_url() . "admin/users/feedbacks"; ?>" class="nav-link"><span>Feedbacks</span></a></li>
 							</ul>
 						</li>
 						<li class="menu-header">Pages</li>
 						<li>
-							<a href="<?= base_url() . "admin/logs"; ?>" class="nav-link">
+							<a href="<?= base_url() . "dashboard/logs"; ?>" class="nav-link">
 								<i class="fas fa-history"></i><span>Logs</span>
 							</a>
 						</li>
 						<li>
-							<a href="<?= base_url() . "admin/settings"; ?>" class="nav-link">
+							<a href="<?= base_url() . "dashboard/settings"; ?>" class="nav-link">
 								<i class="fas fa-cogs"></i><span>Settings</span>
 							</a>
 						</li>
-						<li><a href="<?= base_url() . "auth/logout"; ?>" class="nav-link"><i class="fas fa-sign-out-alt"></i><span>Logout</span></a></li>
+						<li><a href="<?= base_url() . "dashboard/logout"; ?>" class="nav-link"><i class="fas fa-sign-out-alt"></i><span>Logout</span></a></li>
 					</ul>
 
 					<div class="mt-4 mb-4 p-3 hide-sidebar-mini">

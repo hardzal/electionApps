@@ -2,7 +2,7 @@
 	<div class="main-content">
 		<section class="section">
 			<div class="section-header">
-				<h1>Users Management</h1>
+				<h1><?= $title_header; ?></h1>
 				<div class="section-header-breadcrumb">
 					<div class="breadcrumb-item active"><a href="#">Management</a></div>
 					<div class="breadcrumb-item"><a href="#">Users</a></div>
@@ -76,7 +76,7 @@
 					</button>
 				</div>
 				<div class="modal-body">
-					
+
 				</div>
 				<div class="modal-footer bg-whitesmoke br">
 					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

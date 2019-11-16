@@ -56,27 +56,27 @@ $route['translate_uri_dashes'] = FALSE;
 # custom routes
 
 // election routes
-$route['elections'] = 'election';
-$route['election/(:num)/details'] = 'election/detail/$1';
-$route['election/(:num)/delete'] = 'election/delete/$1';
-$route['election/(:num)/stats'] = 'election/stats/$1';
-$route['election/(:num)/report'] = 'election/report/$1';
-$route['election/(:num)/export'] = 'election/export/$1';
-$route['elections/export'] = 'election/export';
-$route['elections/histories'] = 'election/histories';
+$route['admin/elections'] = 'Admin/election';
+$route['admin/election/(:num)/details'] = 'admin/election/detail/$1';
+$route['admin/election/(:num)/delete'] = 'admin/election/delete/$1';
+$route['admin/election/(:num)/stats'] = 'admin/election/stats/$1';
+$route['admin/election/(:num)/report'] = 'admin/election/report/$1';
+$route['admin/election/(:num)/export'] = 'admin/election/export/$1';
+$route['admin/elections/export'] = 'admin/election/export';
+$route['admin/elections/histories'] = 'admin/election/histories';
 
 // candidate routes
-$route['candidates'] = 'candidate';
-$route['candidate/:id/details'] = 'candidate/detail/$1';
-$route['candidate/:id/delete'] = 'candidate/delete/$1';
-$route['candidate/:id/edit'] = 'candidate/edit/$1';
-$route['candidate/:id/export'] = 'candidate/export/$1';
-$route['candidates/export'] = 'candidate/export';
+$route['admin/candidates'] = 'admin/candidate';
+$route['admin/candidate/:id/details'] = 'admin/candidate/detail/$1';
+$route['admin/candidate/:id/delete'] = 'admin/candidate/delete/$1';
+$route['admin/candidate/:id/edit'] = 'admin/candidate/edit/$1';
+$route['admin/candidate/:id/export'] = 'admin/candidate/export/$1';
+$route['admin/candidates/export'] = 'admin/candidate/export';
 
 // user routes
-$route['users'] = 'user';
-$route['user/create'] = 'user/create';
-$route['user/(:num)'] = 'user/detail/$1';
-$route['user/(:num)/details'] = 'user/detail/$1';
-$route['user/(:num)/edit'] = 'user/edit/$1';
-$route['user/(:num)/delete'] = 'user/delete/$1';
+$route['admin/users'] = 'admin/user';
+$route['admin/user/create'] = 'admin/user/create';
+$route['admin/user/(:num)'] = 'admin/user/detail/$1';
+$route['admin/user/(:num)/details'] = 'admin/user/detail/$1';
+$route['admin/user/(:num)/edit'] = 'admin/user/edit/$1';
+$route['admin/user/(:num)/delete'] = 'admin/user/delete/$1';
