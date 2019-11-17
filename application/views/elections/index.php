@@ -15,11 +15,13 @@
 						<div class="card">
 							<div class="card-header">
 								<h4><?= $title; ?></h4>
-								<?= $this->session->flashdata('message'); ?>
 							</div>
 							<div class="tombol">
 								<a href='<?= base_url(); ?>admin/election/create' class="btn btn-primary">Tambah Pemilihan</a>
 							</div>
+
+							<?= $this->session->flashdata('message'); ?>
+
 							<div class="card-body">
 								<div class="table-responsive">
 									<table class="table table-striped" id="table-2">
@@ -42,24 +44,24 @@
 										<tbody>
 											<?php foreach ($elections_data as $election) : ?>
 												<tr>
-													<td>
-
+													<td class="align-middle">
+														<?= $election->id; ?>
 													</td>
-													<td><?= $election->title; ?></td>
+													<td class="align-middle"><?= $election->title; ?></td>
 													<td class="align-middle">
 														<?= $election->total; ?> Orang
 													</td>
-													<td>
+													<td class="align-middle">
 														<?= $election->started_at; ?>
 													</td>
-													<td><?= $election->end_at; ?></td>
+													<td class="align-middle"><?= $election->end_at; ?></td>
 													<td>
 														<?= statusBadge($election->status); ?>
 													</td>
 													<td>
 														<a href="<?= base_url('user/') . $election->id . "/details"; ?>" class="detail btn btn-primary" data-toggle="modal" data-target="#detailModal"><i class="fas fa-info-circle"></i></a>
 														<a href="<?= base_url('user/') . $election->id . "/edit"; ?>" class="btn btn-success"><i class="far fa-edit"></i></a>
-														<a data-id="<?= $election->id; ?>" class="hapus btn btn-danger"><i class="far fa-trash-alt"></i></button>
+														<a data-link="admin/election/<?= $election->id; ?>/delete" data-id="<?= $election->id; ?>" class="hapus btn btn-danger"><i class="far fa-trash-alt"></i></button>
 													</td>
 												</tr>
 											<?php endforeach; ?>

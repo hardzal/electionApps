@@ -8,3 +8,12 @@ function statusBadge($id)
 		return "<div class='badge badge-danger'>Progress</div>";
 	}
 }
+
+function deleteImage($path, $image_name)
+{
+	// $ci = &get_instance();
+
+	$file = $path . $image_name;
+
+	return unlink($file);
+}

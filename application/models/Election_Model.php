@@ -18,7 +18,7 @@ class Election_Model extends CI_Model
 			elections 
 			LEFT JOIN candidates 
 			ON elections.id = candidates.election_id
-			JOIN user_details
+			LEFT JOIN user_details
 			ON candidates.user_id = user_details.user_id";
 
 		return $this->db->query($query)->result_object();
@@ -31,7 +31,7 @@ class Election_Model extends CI_Model
 		// return $this->db->query($query)->result_object();
 	}
 
-	public function update()
+	public function update($data)
 	{ }
 
 	public function delete()

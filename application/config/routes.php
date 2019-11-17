@@ -67,10 +67,10 @@ $route['admin/elections/histories'] = 'admin/election/histories';
 
 // candidate routes
 $route['admin/candidates'] = 'admin/candidate';
-$route['admin/candidate/:id/details'] = 'admin/candidate/detail/$1';
-$route['admin/candidate/:id/delete'] = 'admin/candidate/delete/$1';
-$route['admin/candidate/:id/edit'] = 'admin/candidate/edit/$1';
-$route['admin/candidate/:id/export'] = 'admin/candidate/export/$1';
+$route['admin/candidate/(:num)/details'] = 'admin/candidate/detail/$1';
+$route['admin/candidate/(:num)/delete'] = 'admin/candidate/delete/$1';
+$route['admin/candidate/(:num)/edit'] = 'admin/candidate/edit/$1';
+$route['admin/candidate/(:num)/export'] = 'admin/candidate/export/$1';
 $route['admin/candidates/export'] = 'admin/candidate/export';
 
 // user routes

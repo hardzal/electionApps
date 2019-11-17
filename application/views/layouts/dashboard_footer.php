@@ -17,6 +17,8 @@
 <script src="<?= base_url(); ?>assets/vendor/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 <script src="<?= base_url(); ?>assets/js/stisla.js"></script>
 
+<script src="<?= base_url(); ?>assets/vendor/jquery/jquery-ui.min.js"></script>
+
 <!-- JS Libraries -->
 <!-- <script src="<?= base_url(); ?>node_modules/simpleweather/jquery.simpleWeather.min.js"></script>
 <script src="<?= base_url(); ?>node_modules/chart.js/dist/Chart.min.js"></script>

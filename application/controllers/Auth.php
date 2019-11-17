@@ -141,6 +141,7 @@ class Auth extends CI_Controller
 			redirect('auth/signup');
 		}
 	}
+
 	private function userToken($email, $token)
 	{
 		$user_token = [

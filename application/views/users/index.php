@@ -16,11 +16,13 @@
 						<div class="card">
 							<div class="card-header">
 								<h4><?= $title; ?></h4>
-								<?= $this->session->flashdata('message'); ?>
 							</div>
 							<div class="tombol">
 								<a href='<?= base_url(); ?>/user/create' class="btn btn-primary">Tambah User</a>
 							</div>
+
+							<?= $this->session->flashdata('message'); ?>
+
 							<div class="card-body">
 								<div class="table-responsive">
 									<table class="table table-striped" id="table-1">
@@ -51,7 +53,7 @@
 													<td>
 														<a href="<?= base_url('user/') . $user->id . "/details"; ?>" class="detail btn btn-primary" data-toggle="modal" data-target="#detailModal"><i class="fas fa-info-circle"></i></a>
 														<a href="<?= base_url('user/') . $user->id . "/edit"; ?>" class="btn btn-success"><i class="far fa-edit"></i></a>
-														<a data-id="<?= $user->id; ?>" class="hapus btn btn-danger"><i class="far fa-trash-alt"></i></button>
+														<a data-link="admin/user/<?= $user->id; ?>/delete" data-id="<?= $user->id; ?>" class="hapus btn btn-danger"><i class="far fa-trash-alt"></i></button>
 													</td>
 												</tr>
 											<?php endforeach; ?>

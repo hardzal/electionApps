@@ -15,10 +15,12 @@
 						<div class="card">
 							<div class="card-header">
 								<h4><?= $title; ?></h4>
-								<?= $this->session->flashdata('message'); ?>
 							</div>
 							<div class="tombol">
 								<a href='<?= base_url(); ?>admin/candidate/create' class="btn btn-primary">Tambah Candidate</a>
+							</div>
+							<div class="col-md-8 m-3">
+								<?= $this->session->flashdata('message'); ?>
 							</div>
 							<div class="card-body">
 								<div class="table-responsive">
@@ -37,9 +39,9 @@
 											<?php $no = 1;
 											foreach ($candidate_data as $candidate) : ?>
 												<tr>
-													<td><?= $no; ?></td>
-													<td><?= $candidate->name; ?></td>
-													<td><?= $candidate->nim; ?></td>
+													<td class="align-middle text-center"><?= $no++; ?></td>
+													<td class="align-middle"><?= $candidate->name; ?></td>
+													<td class="align-middle"><?= $candidate->nim; ?></td>
 													<td class="align-middle"><?= $candidate->title; ?></td>
 													<td>
 														<?= statusBadge($candidate->status); ?>
@@ -47,7 +49,7 @@
 													<td>
 														<a href="<?= base_url('admin/candidate/') . $candidate->id . "/details"; ?>" class="detail btn btn-primary" data-toggle="modal" data-target="#detailModal"><i class="fas fa-info-circle"></i></a>
 														<a href="<?= base_url('admin/candidate/') . $candidate->id . "/edit"; ?>" class="btn btn-success"><i class="far fa-edit"></i></a>
-														<a data-id="<?= $candidate->id; ?>" class="hapus btn btn-danger"><i class="far fa-trash-alt"></i></button>
+														<a data-link="admin/candidate/<?= $candidate->id; ?>/delete" data-id="<?= $candidate->id; ?>" class="hapus btn btn-danger"><i class="far fa-trash-alt"></i></button>
 													</td>
 												</tr>
 											<?php endforeach; ?>

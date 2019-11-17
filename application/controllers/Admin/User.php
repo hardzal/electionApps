@@ -156,8 +156,8 @@ class User extends CI_Controller
 			return;
 		}
 
-		$this->session->set_flashdata('message', '<script>swal("Good Job", "You clicked the button!", "success")</script>');
-		redirect(base_url('users'));
+		$this->session->set_flashdata('message', '<script>swal("Good Job", "You have deleted data!", "success")</script>');
+		redirect(base_url('admin/users'));
 	}
 
 	public function logs($id = null)
