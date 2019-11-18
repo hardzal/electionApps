@@ -7,7 +7,6 @@ class Candidate extends CI_Controller
 		parent::__construct();
 		is_logged_in();
 		$this->load->model("Candidate_Model", "candidates");
-		$this->load->helper('election');
 	}
 
 	public function index()
@@ -32,7 +31,6 @@ class Candidate extends CI_Controller
 
 			if (count($result)) {
 				foreach ($result as $hasil) {
-					// $result_arr[] = $hasil['nim'];
 					$result_arr[] = array(
 						'id' => $hasil['id'],
 						'label' => $hasil['nim'],
@@ -70,7 +68,7 @@ class Candidate extends CI_Controller
 			if ($this->_create()) {
 				$this->session->set_flashdata('message', '<div class="alert alert-success">Berhasil menambahkan data</div>');
 			} else {
-				$this->session->set_flashdata('message', '<div class="alert alert-danger">Gagal menghapus data</div>');
+				$this->session->set_flashdata('message', '<div class="alert alert-danger">Gagal menambahkan data</div>');
 			}
 
 			redirect('admin/candidates');
@@ -84,7 +82,7 @@ class Candidate extends CI_Controller
 		$visi = $this->input->post('visi', true);
 		$misi = $this->input->post('misi', true);
 
-		$img_name = $this->doUploadImage();
+		$img_name = doUploadImage();
 
 		$candidate = [
 			'election_id' => $election_id,
@@ -101,22 +99,6 @@ class Candidate extends CI_Controller
 		return $this->candidates->create($candidate);
 	}
 
-	protected function doUploadImage()
-	{
-		$config['allowed_types'] = "gif|jpg|jpeg|png|jfif|bmp";
-		$config['max_sizes'] = 1024;
-		$config['upload_path'] = "./storage/candidates/";
-
-		$this->load->library('upload', $config);
-		// $this->load->library('encryption');
-
-		if (!$this->upload->do_upload('image')) {
-			return false;
-		}
-
-		return $this->upload->data('file_name');
-	}
-
 	public function edit($id)
 	{
 		$data['title'] = "Memperbaharui Kandidat";
@@ -126,7 +108,9 @@ class Candidate extends CI_Controller
 		$data['elections'] = $this->election->getElections();
 
 		$this->form_validation->set_rules('nim', 'NIM', 'required|trim');
+		$this->form_validation->set_rules('election_id', 'Election', 'required');
 		$this->form_validation->set_rules('user_id', 'User ID', 'required|trim|is_numeric');
+		$this->form_validation->set_rules('image', 'Image', 'required');
 		$this->form_validation->set_rules('visi', 'visi', 'required|trim');
 		$this->form_validation->set_rules('misi', 'misi', 'required|trim');
 

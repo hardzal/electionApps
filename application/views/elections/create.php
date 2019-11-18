@@ -16,8 +16,12 @@
 						<div class="card">
 							<div class="card-header">
 								<h4><?= $title; ?></h4>
+							</div>
+
+							<div class="col-md-8 m-3">
 								<?= $this->session->flashdata('message'); ?>
 							</div>
+
 							<div class="card-body">
 								<form method="POST" action="" enctype="multipart/form-data">
 									<div class="form-group">
@@ -26,11 +30,11 @@
 									</div>
 									<div class="form-group">
 										<label for="date-range">Waktu Mulai</label>
-										<input type="text" class="form-control datetimepicker" />
+										<input type="text" class="form-control datetimepicker" name="mulai" />
 									</div>
 									<div class="form-group">
 										<label for="date-range">Waktu Akhir</label>
-										<input type="text" class="form-control datetimepicker" />
+										<input type="text" class="form-control datetimepicker" name="akhir" />
 									</div>
 									<div class="form-group">
 										<label class="col-form-label col-12 col-md-3 col-lg-3">Thumbnail</label>
@@ -45,15 +49,23 @@
 										<label for="deskripsi">Deskripsi</label>
 										<textarea class="form-control summernote-simple" name="deskripsi"></textarea>
 									</div>
+
 									<div class="form-group">
-										<div class="row">
-											<div class="col-md-4">
-												<label for="num_candidates">Jumlah kandidat</label>
-												<input type="number" name="num_candidates" class="form-control" min=1 />
-											</div>
-											<div class="col-md-8">
-												<label for="name_candidate">Nama kandidat</label>
-												<input type="text" class="form-control" name="name_candidate" />
+										<label for="tambah">Tambah Candidate?</label>
+										<a href="#candidates" class="candidate btn btn-primary" name="candidate">Tambah</a>
+									</div>
+
+									<div id="candidates" class="candidates">
+										<div class="form-group">
+											<div class="row">
+												<div class="col-md-4">
+													<label for="num_candidates">Jumlah kandidat</label>
+													<input type="number" name="num_candidates" class="num_candidate form-control" min=1 />
+												</div>
+												<div class="col-md-8">
+													<label for="nim_candidate">NIM kandidat</label>
+													<input type="text" class="nim_candidate1 form-control" name="nim_candidate[]" />
+												</div>
 											</div>
 										</div>
 									</div>

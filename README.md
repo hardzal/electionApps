@@ -85,3 +85,18 @@ jika pemilihan sudah berakhir maka user akan diberi notifikasi bahwa pemilihan t
 - [ ] /member/settings
 - [ ] /member/profile
 - [ ] /member/logs
+
+---- 
+## Database Migration
+
+- Run Migration
+
+	``
+	$ php index.php migration migrate
+	``
+
+- Create Migration
+
+	``
+	$ php index.php migration create your_migration_name
+	``

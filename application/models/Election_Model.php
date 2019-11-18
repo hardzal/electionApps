@@ -11,17 +11,7 @@ class Election_Model extends CI_Model
 
 	public function getElections()
 	{
-		$query = "SELECT 
-			elections.*, 
-			COUNT(candidates.user_id) as total
-		FROM 
-			elections 
-			LEFT JOIN candidates 
-			ON elections.id = candidates.election_id
-			LEFT JOIN user_details
-			ON candidates.user_id = user_details.user_id";
-
-		return $this->db->query($query)->result_object();
+		return $this->db->get($this::TABLE_NAME)->result_object();
 	}
 
 	public function getElection()
@@ -31,9 +21,13 @@ class Election_Model extends CI_Model
 		// return $this->db->query($query)->result_object();
 	}
 
+	public function create($data) {
+		return $this->db->insert($this::TABLE_NAME, $data);
+	}
+
 	public function update($data)
 	{ }
 
-	public function delete()
+	public function delete($id)
 	{ }
 }

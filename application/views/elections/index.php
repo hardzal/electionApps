@@ -19,9 +19,9 @@
 							<div class="tombol">
 								<a href='<?= base_url(); ?>admin/election/create' class="btn btn-primary">Tambah Pemilihan</a>
 							</div>
-
-							<?= $this->session->flashdata('message'); ?>
-
+							<div class="col-md-8 m-3">
+								<?= $this->session->flashdata('message'); ?>
+							</div>
 							<div class="card-body">
 								<div class="table-responsive">
 									<table class="table table-striped" id="table-2">

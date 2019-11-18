@@ -64,6 +64,23 @@ $(function () {
 		}
 	});
 	// });
+	$('.candidates').hide();
+
+	$('.candidate').click(function () {
+		$('.candidates').show();
+		let temp = 1;
+
+		$('input[type="number"].num_candidate').on('change paste keyup', function () {
+			let current = $('.num_candidate').val();
+
+			if (current > temp) {
+				$('.nim_candidate' + temp).after('<input type="text" class="mt-3 nim_candidate' + current + ' form-control" name="nim_candidate[]" />');
+			} else if (current < temp) {
+				$('.nim_candidate' + temp).remove();
+			}
+			temp = current;
+		});
+	});
 
 	// datatables
 	$("#table-1").dataTable({

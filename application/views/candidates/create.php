@@ -29,6 +29,7 @@
 												<option value="<?= $election->id; ?>"><?= $election->title; ?></option>
 											<?php endforeach; ?>
 										</select>
+										<?= form_error('election_id', '<small class="text-danger">', '</small>'); ?>
 									</div>
 									<div class="form-group">
 										<div class="row">
