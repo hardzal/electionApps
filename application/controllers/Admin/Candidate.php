@@ -108,9 +108,6 @@ class Candidate extends CI_Controller
 		$data['elections'] = $this->election->getElections();
 
 		$this->form_validation->set_rules('nim', 'NIM', 'required|trim');
-		$this->form_validation->set_rules('election_id', 'Election', 'required');
-		$this->form_validation->set_rules('user_id', 'User ID', 'required|trim|is_numeric');
-		$this->form_validation->set_rules('image', 'Image', 'required');
 		$this->form_validation->set_rules('visi', 'visi', 'required|trim');
 		$this->form_validation->set_rules('misi', 'misi', 'required|trim');
 
@@ -165,8 +162,8 @@ class Candidate extends CI_Controller
 		$candidate_id = $this->input->post('id');
 		$candidate = $this->candidates->getCandidate($candidate_id);
 
-		$delete_image = deleteImage(FCPATH . "storage\candidates\\", $candidate->image);
-		$delete = $this->candidates->delete($candidate_id);
+		deleteImage("candidates", $candidate->image);
+		$this->candidates->delete($candidate_id);
 
 		if ($id == null) {
 			$data['title'] = "404 Error Not Found";

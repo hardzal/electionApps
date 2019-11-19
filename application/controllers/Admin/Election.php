@@ -72,7 +72,7 @@ class Election extends CI_Controller
 			'title' => $title,
 			'description' => $description,
 			'image' => $image,
-			'started_at' => $start,
+			'start_at' => $start,
 			'end_at' => $end,
 			'status' => 0,
 		];
@@ -139,7 +139,7 @@ class Election extends CI_Controller
 		$election_id = $this->input->post('id');
 		$election = $this->elections->getElection($election_id);
 
-		deleteImage(FCPATH . "storage\\elections\\", $election->image);
+		deleteImage("elections", $election->image);
 		$this->elections->delete($election_id);
 
 		if ($id == null) {

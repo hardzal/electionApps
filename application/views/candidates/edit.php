@@ -46,7 +46,7 @@
 												<input class="form-control" name="nama" type="text" id="nama_candidate" value="<?= $candidate->name; ?>" />
 												<?= form_error('nama', '<small class="text-danger">', '</small>'); ?>
 											</div>
-											<input name="user_id" value="" type="hidden" id="user_id" value="<?= $candidate->user_id; ?>" />
+											<input name="user_id" type="hidden" id="user_id" value="<?= $candidate->user_id; ?>" />
 											<?= form_error('user_id', '<small class="text-danger">', '</small>'); ?>
 										</div>
 									</div>

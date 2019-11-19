@@ -9,9 +9,9 @@ function statusBadge($id)
 	}
 }
 
-function deleteImage($path, $image_name)
+function deleteImage($folder, $image_name)
 {
-	$file = $path . $image_name;
+	$file = FCPATH. "\storage\\". $folder . "\\" . $image_name;
 
 	return unlink($file);
 }
