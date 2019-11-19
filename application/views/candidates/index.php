@@ -19,9 +19,11 @@
 							<div class="tombol">
 								<a href='<?= base_url(); ?>admin/candidate/create' class="btn btn-primary">Tambah Candidate</a>
 							</div>
-							<div class="col-md-8 m-3">
+							<?php if($this->session->flashdata('message')) : ?>
+								<div class="col-md-8 m-3">
 								<?= $this->session->flashdata('message'); ?>
-							</div>
+								</div>
+							<?php endif;?>
 							<div class="card-body">
 								<div class="table-responsive">
 									<table class="table table-striped" id="table-2">

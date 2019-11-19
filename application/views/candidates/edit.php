@@ -6,7 +6,7 @@
 				<div class="section-header-breadcrumb">
 					<div class="breadcrumb-item active"><a href="#">Management</a></div>
 					<div class="breadcrumb-item"><a href="#">Candidates</a></div>
-					<div class="breadcrumb-item">Create</div>
+					<div class="breadcrumb-item">Edit</div>
 				</div>
 			</div>
 
@@ -18,7 +18,11 @@
 								<h4><?= $title; ?></h4>
 							</div>
 
-							<?= $this->session->flashdata('message'); ?>
+							<?php if($this->session->flashdata('message')) : ?>
+								<div class="col-md-8 m-3">
+								<?= $this->session->flashdata('message'); ?>
+								</div>
+							<?php endif;?>
 
 							<div class="card-body">
 								<form method="POST" action="" enctype="multipart/form-data">

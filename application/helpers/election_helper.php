@@ -16,13 +16,13 @@ function deleteImage($path, $image_name)
 	return unlink($file);
 }
 
-function doUploadImage()
+function doUploadImage($path)
 {
 	$ci = &get_instance();
 
 	$config['allowed_types'] = "gif|jpg|jpeg|png|jfif|bmp";
 	$config['max_sizes'] = 1024;
-	$config['upload_path'] = "./storage/candidates/";
+	$config['upload_path'] = "./storage/{$path}";
 
 	$ci->load->library('upload', $config);
 

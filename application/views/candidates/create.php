@@ -18,7 +18,11 @@
 								<h4><?= $title; ?></h4>
 							</div>
 
-							<?= $this->session->flashdata('message'); ?>
+							<?php if($this->session->flashdata('message')) : ?>
+								<div class="col-md-8 m-3">
+								<?= $this->session->flashdata('message'); ?>
+								</div>
+							<?php endif;?>
 
 							<div class="card-body">
 								<form method="POST" action="" enctype="multipart/form-data">

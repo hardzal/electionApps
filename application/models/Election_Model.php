@@ -14,20 +14,22 @@ class Election_Model extends CI_Model
 		return $this->db->get($this::TABLE_NAME)->result_object();
 	}
 
-	public function getElection()
+	public function getElection($id)
 	{
-		$query = "";
-
-		// return $this->db->query($query)->result_object();
+		return $this->db->get_where($this::TABLE_NAME, ['id' => $id])->row_object();
 	}
 
 	public function create($data) {
 		return $this->db->insert($this::TABLE_NAME, $data);
 	}
 
-	public function update($data)
-	{ }
+	public function update($data, $id)
+	{ 
+		return $this->db->update($this::TABLE_NAME, $data, ['id' => $id]);
+	}
 
 	public function delete($id)
-	{ }
+	{ 
+		return $this->db->delete($this::TABLE_NAME, ['id' => $id]);
+	}
 }

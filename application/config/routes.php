@@ -59,6 +59,7 @@ $route['translate_uri_dashes'] = FALSE;
 $route['admin/elections'] = 'Admin/election';
 $route['admin/election/(:num)/details'] = 'admin/election/detail/$1';
 $route['admin/election/(:num)/delete'] = 'admin/election/delete/$1';
+$route['admin/election/(:num)/edit'] = 'admin/election/edit/$1';
 $route['admin/election/(:num)/stats'] = 'admin/election/stats/$1';
 $route['admin/election/(:num)/report'] = 'admin/election/report/$1';
 $route['admin/election/(:num)/export'] = 'admin/election/export/$1';

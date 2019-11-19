@@ -82,7 +82,7 @@ class Candidate extends CI_Controller
 		$visi = $this->input->post('visi', true);
 		$misi = $this->input->post('misi', true);
 
-		$img_name = doUploadImage();
+		$img_name = doUploadImage('candidates');
 
 		$candidate = [
 			'election_id' => $election_id,
@@ -138,8 +138,8 @@ class Candidate extends CI_Controller
 		$visi = $this->input->post('visi', true);
 		$misi = $this->input->post('misi', true);
 
-		if (isset($_SESSION['img']['tmp_name'])) {
-			$img_name = $this->doUploadImage();
+		if (!empty($_SESSION['img']['tmp_name'])) {
+			$img_name = doUploadImage('candidates');
 		} else {
 			$img_name = $this->input->post("image_hidden", true);
 		}
@@ -149,7 +149,8 @@ class Candidate extends CI_Controller
 			'user_id' => $user_id,
 			'image' => $img_name,
 			'visi' => $visi,
-			'misi' => $misi
+			'misi' => $misi,
+			'updated_at' => date('d-m-Y H:i:s', time())
 		];
 
 		if (!$img_name) {
