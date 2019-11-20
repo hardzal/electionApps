@@ -54,7 +54,8 @@ $(function () {
 		return false;
 	});
 
-	// $('#nim_candidate').click(function () {
+	$('.')
+	
 	$('#nim_candidate').autocomplete({
 		source: `${base_url}admin/candidate/getCandidateByNim`,
 		select: function (event, ui) {

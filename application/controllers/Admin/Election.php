@@ -26,6 +26,9 @@ class Election extends CI_Controller
 	public function detail()
 	{
 		$data['title'] = "Detail Pemilihan";
+
+		
+
 	}
 
 	public function create()

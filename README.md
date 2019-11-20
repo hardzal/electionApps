@@ -4,9 +4,9 @@
 
 - [x] Login + Logout
 - [x] CRUD User
-- [ ] CRUD Kandidat
-- [ ] CRUD Pemilih
-- [ ] CRUD Pemilihan
+- [x] CRUD Kandidat
+- [x] CRUD Pemilih
+- [x] CRUD Pemilihan
 - [ ] Report Pemilihan
 - [ ] Statistik Pemilihan
 - [ ] Notification Pemilihan
@@ -46,11 +46,11 @@ jika pemilihan sudah berakhir maka user akan diberi notifikasi bahwa pemilihan t
 - [x] /auth/changePassword
 ---
 ### Elections
-- [ ] /admin/elections
-- [ ] /admin/election/create
-- [ ] /admin/election/:id/details
-- [ ] /admin/election/:id/delete
-- [ ] /admin/election/:id/update
+- [x] /admin/elections
+- [x] /admin/election/create
+- [] /admin/election/:id/details
+- [x] /admin/election/:id/delete
+- [x] /admin/election/:id/update
 - [ ] /admin/election/:id/stats
 - [ ] /admin/election/:id/report
 - [ ] /admin/election/:id/export
@@ -58,10 +58,10 @@ jika pemilihan sudah berakhir maka user akan diberi notifikasi bahwa pemilihan t
 - [ ] /elections/histories
 ---
 ### Candidat
-- [ ] /admin/candidates
-- [ ] /admin/candidate/create
-- [ ] /admin/candidate/:id/delete
-- [ ] /admin/candidate/:id/edit
+- [x] /admin/candidates
+- [x] /admin/candidate/create
+- [x] /admin/candidate/:id/delete
+- [x] /admin/candidate/:id/edit
 - [ ] /admin/candidate/:id/export
 - [ ] /admin/candidates/export
 ---

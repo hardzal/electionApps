@@ -33,7 +33,7 @@ class User extends CI_Controller
 		$data['user_data'] = getUserData();
 		$data['roles'] = $this->role->getRoles();
 
-		$this->form_validation->set_rules('nama', 'required|trim|alpha');
+		$this->form_validation->set_rules('nama', 'Nama', 'required|trim|alpha');
 		$this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email');
 		$this->form_validation->set_rules('nim', 'NIM', 'required|trim|numeric');
 		$this->form_validation->set_rules('hp', 'No Hp', 'numeric');
@@ -157,7 +157,7 @@ class User extends CI_Controller
 		}
 
 		$this->session->set_flashdata('message', '<script>swal("Good Job", "You have deleted data!", "success")</script>');
-		redirect(base_url('admin/users'));
+		redirect('admin/users');
 	}
 
 	public function logs($id = null)

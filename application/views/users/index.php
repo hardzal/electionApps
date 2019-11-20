@@ -78,11 +78,25 @@
 					</button>
 				</div>
 				<div class="modal-body">
-
+					<div class="row">
+						<div class="col-md-4"><strong>Nama</strong></div>
+						<div class="col-md-8"></div>
+					</div>
+					<div class="row">
+						<div class="col-md-4"><strong>NIM</strong></div>
+						<div class="col-md-8"></div>
+					</div>
+					<div class="row">
+						<div class="col-md-4"><strong>Email</strong></div>
+						<div class="col-md-8"></div>
+					</div>
+					<div class="row">
+						<div class="col-md-4"><strong></strong></div>
+						<div class="col-md-8"></div>
+					</div>
 				</div>
 				<div class="modal-footer bg-whitesmoke br">
-					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-					<button type="button" class="btn btn-primary">Save changes</button>
+					<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
 				</div>
 			</div>
 		</div>
