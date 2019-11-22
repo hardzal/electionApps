@@ -42,6 +42,18 @@
 										<input type="hidden" name="password_current" value="<?= $user->password; ?>" />
 									</div>
 									<div class="form-group">
+										<label for="is_active">Status</label>
+										<select name="is_active" class="form-control">
+											<?php if ($user->is_active) : ?>
+												<option value=0>Tidak Aktif</option>
+												<option value=1 selected>Aktif</option>
+											<?php else : ?>
+												<option value=0 selected>Tidak Aktif</option>
+												<option value=1>Aktif</option>
+											<?php endif; ?>
+										</select>
+									</div>
+									<div class="form-group">
 										<label for="role">Role</label>
 										<select class="form-control" name="role_id">
 											<?php if (isset($roles)) : foreach ($roles as $role) : ?>

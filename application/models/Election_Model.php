@@ -19,6 +19,10 @@ class Election_Model extends CI_Model
 		return $this->db->get_where($this::TABLE_NAME, ['id' => $id])->row_object();
 	}
 
+	public function getCandidatesElection($id) {
+		
+	}
+
 	public function create($data) {
 		return $this->db->insert($this::TABLE_NAME, $data);
 	}

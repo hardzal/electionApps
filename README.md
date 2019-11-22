@@ -48,7 +48,7 @@ jika pemilihan sudah berakhir maka user akan diberi notifikasi bahwa pemilihan t
 ### Elections
 - [x] /admin/elections
 - [x] /admin/election/create
-- [] /admin/election/:id/details
+- [x] /admin/election/:id/details
 - [x] /admin/election/:id/delete
 - [x] /admin/election/:id/update
 - [ ] /admin/election/:id/stats
@@ -59,6 +59,7 @@ jika pemilihan sudah berakhir maka user akan diberi notifikasi bahwa pemilihan t
 ---
 ### Candidat
 - [x] /admin/candidates
+- [ ] /admin/candidate/:id/details
 - [x] /admin/candidate/create
 - [x] /admin/candidate/:id/delete
 - [x] /admin/candidate/:id/edit
@@ -67,7 +68,7 @@ jika pemilihan sudah berakhir maka user akan diberi notifikasi bahwa pemilihan t
 ---
 ### User
 - [x] /users
-- [ ] /user/:id/details
+- [x] /user/:id/details
 - [x] /user/create
 - [x] /user/:id/delete
 - [x] /user/:id/edit

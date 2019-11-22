@@ -22,7 +22,14 @@ class User_Model extends CI_Model
 
 	public function getUser($data)
 	{
-		return $this->db->get_where($this::TABLE_NAME, $data)->row_object();
+		return $this->db
+			->select('users.*, user_details.name, user_details.hp, roles.role')
+			->from($this::TABLE_NAME)
+			->join('user_details', 'users.id = user_details.user_id', 'left')
+			->join('roles', 'users.role_id = roles.id', 'left')
+			->where($data)
+			->get()
+			->row_object();
 	}
 
 	public function getUserRole($role_id)

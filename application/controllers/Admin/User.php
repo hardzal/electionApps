@@ -6,9 +6,6 @@ class User extends CI_Controller
 	{
 		parent::__construct();
 		is_logged_in();
-		$this->load->model("Auth_Model", "auth");
-		$this->load->model("User_Model", "user");
-		$this->load->model("Role_Model", "role");
 	}
 
 	public function index()
@@ -23,6 +20,16 @@ class User extends CI_Controller
 		$this->load->view('layouts/dashboard_sidebar', $data);
 		$this->load->view('users/index', $data);
 		$this->load->view('layouts/dashboard_footer');
+	}
+
+	public function details($id = null)
+	{
+		if ($id == null) {
+			$user_id = $this->input->post('id');
+			$user = $this->user->getUser(['users.id' => $user_id]);
+			echo json_encode($user);
+			return;
+		}
 	}
 
 	public function create()
@@ -81,6 +88,7 @@ class User extends CI_Controller
 		$email = $this->input->post('email', true);
 		$nim = $this->input->post('nim', true);
 		$hp = $this->input->post('hp', true);
+		$is_active = $this->input->post('is_active', true);
 
 		if ($this->input->post('password')) {
 			$password = $this->input->post('password', true);
@@ -97,7 +105,7 @@ class User extends CI_Controller
 				'nim' => $nim,
 				'email' => $email,
 				'password' => $password,
-				'is_active' => 0
+				'is_active' => $is_active
 			],
 			'userdetail' => [
 				'name' => $nama,
@@ -115,7 +123,7 @@ class User extends CI_Controller
 
 		// class object
 		// $user = new stdClass();
-		$user = $this->user->getUser(['id' => $id]);
+		$user = $this->user->getUser(['users.id' => $id]);
 		$user->detail = $this->userDetail->getUserDetail(['user_id' => $id]);
 
 		$data['user'] = $user;
@@ -135,10 +143,10 @@ class User extends CI_Controller
 		} else {
 			if ($this->inputUser('update')) {
 				$this->session->set_flashdata('message', "<script>alert('Berhasil memperbaharui user!');</script>");
-				redirect('users');
+				redirect('admin/users');
 			} else {
 				$this->session->set_flashdata('message', "<script>alert('Gagal memperbaharui user!');</script>");
-				redirect('user/' . $id . '/edit');
+				redirect('admin/user/' . $id . '/edit');
 			}
 		}
 	}

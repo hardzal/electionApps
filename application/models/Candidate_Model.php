@@ -17,6 +17,7 @@ class Candidate_Model extends CI_Model
 				candidates.*,
 				user_details.name,
 				users.nim,
+				users.email,
 				elections.title
 			FROM candidates 
 				LEFT JOIN users

@@ -22,6 +22,16 @@ class Candidate extends CI_Controller
 		$this->load->view('layouts/dashboard_footer');
 	}
 
+	public function details($id = null)
+	{
+		if ($id == null) {
+			$candidate_id = $this->input->post('id');
+			$election = $this->candidates->getCandidates($candidate_id);
+			echo json_encode($election);
+			return;
+		}
+	}
+
 	public function getCandidateByNim()
 	{
 		if ($this->input->get('term')) {

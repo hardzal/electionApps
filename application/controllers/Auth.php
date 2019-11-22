@@ -5,10 +5,6 @@ class Auth extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
-		if ($this->session->userdata('nim')) {
-			redirect('/dashboard');
-		}
-		$this->load->library('form_validation');
 	}
 
 	public function index()
@@ -23,7 +19,6 @@ class Auth extends CI_Controller
 			$this->load->view('layouts/auth_header', $data);
 			$this->load->view('auth/login');
 			$this->load->view('layouts/auth_footer');
-			print_r($this->input->post);
 		} else {
 			// login process
 			$this->_login();
@@ -48,9 +43,9 @@ class Auth extends CI_Controller
 					$data = [
 						'id' => $user->id,
 						'nim' => $user->nim,
-						'role_id' => $user->role_id
+						'role_id' => $user->role_id,
 					];
-
+					$this->auth->setAuth(['last_login' => date('Y-m-d H:i:s', time())], $user->id);
 					// set session
 					$this->session->set_userdata($data);
 
@@ -314,6 +309,8 @@ class Auth extends CI_Controller
 
 	public function logout()
 	{
+		$this->auth->setAuth(['last_logout' => date('Y-m-d H:i:s', time())], $this->session->userdata('id'));
+		$this->session->unset_userdata('id');
 		$this->session->unset_userdata('nim');
 		$this->session->unset_userdata('role_id');
 		$this->session->set_flashdata('message', '<div class="alert alert-primary">You\'ve been logout.</div>');

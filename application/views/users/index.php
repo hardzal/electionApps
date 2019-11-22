@@ -51,7 +51,7 @@
 													<td><?= getUserRole($user->role_id); ?></td>
 													<td><?= isUserActive($user->id, $user->is_active); ?></td>
 													<td>
-														<a href="<?= base_url('admin/user/') . $user->id . "/details"; ?>" class="detail btn btn-primary" data-toggle="modal" data-target="#detailModal"><i class="fas fa-info-circle"></i></a>
+														<a href="<?= base_url('admin/user/') . $user->id . "/details"; ?>" class="user_details detail btn btn-primary" data-toggle="modal" data-target="#detailModal" data-id="<?= $user->id; ?>" data-link="admin/user/details"><i class="fas fa-info-circle"></i></a>
 														<a href="<?= base_url('admin/user/') . $user->id . "/edit"; ?>" class="btn btn-success"><i class="far fa-edit"></i></a>
 														<a data-link="admin/user/<?= $user->id; ?>/delete" data-id="<?= $user->id; ?>" class="hapus btn btn-danger"><i class="far fa-trash-alt"></i></button>
 													</td>
@@ -78,25 +78,40 @@
 					</button>
 				</div>
 				<div class="modal-body">
-					<div class="row">
+					<div class="row mb-3">
 						<div class="col-md-4"><strong>Nama</strong></div>
-						<div class="col-md-8"></div>
+						<div class="col-md-2">:</div>
+						<div class="col-md-6 nama"></div>
 					</div>
-					<div class="row">
+					<div class="row mb-3">
 						<div class="col-md-4"><strong>NIM</strong></div>
-						<div class="col-md-8"></div>
+						<div class="col-md-2">:</div>
+						<div class="col-md-6 nim"></div>
 					</div>
-					<div class="row">
+					<div class="row mb-3">
 						<div class="col-md-4"><strong>Email</strong></div>
-						<div class="col-md-8"></div>
+						<div class="col-md-2">:</div>
+						<div class="col-md-6 email"></div>
 					</div>
-					<div class="row">
-						<div class="col-md-4"><strong></strong></div>
-						<div class="col-md-8"></div>
+					<div class="row mb-3">
+						<div class="col-md-4"><strong>No Hp</strong></div>
+						<div class="col-md-2">:</div>
+						<div class="col-md-6 hp"></div>
+					</div>
+					<div class="row mb-3">
+						<div class="col-md-4"><strong>Role</strong></div>
+						<div class="col-md-2">:</div>
+						<div class="col-md-6 role"></div>
+					</div>
+					<div class="row mb-3">
+						<div class="col-md-4"><strong>User Last Login</strong></div>
+						<div class="col-md-2">:</div>
+						<div class="col-md-6 last_login"></div>
 					</div>
 				</div>
 				<div class="modal-footer bg-whitesmoke br">
-					<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+					<a href="<?= base_url(); ?>" class="btn btn-primary">Details</a>
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 				</div>
 			</div>
 		</div>

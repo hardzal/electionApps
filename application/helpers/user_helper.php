@@ -21,8 +21,8 @@ function isUserActive($user_id, $is_active)
 {
 	$ci = &get_instance();
 	$user = $ci->user->getUser([
-		'id' => $user_id,
-		'is_active' => $is_active
+		'users.id' => $user_id,
+		'users.is_active' => $is_active
 	]);
 
 	if ($user->is_active) {

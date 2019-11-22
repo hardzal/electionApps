@@ -5,7 +5,6 @@ class Auth_Model extends CI_Model
 	private const TABLE_NAME = ['users', 'user_details', 'user_token'];
 
 	// users table
-
 	public function getUser($data)
 	{
 		return $this->db->get_where($this::TABLE_NAME[0], $data)->row_object();
@@ -17,15 +16,19 @@ class Auth_Model extends CI_Model
 		return $this->db->affected_rows();
 	}
 
-	// user_details table
+	public function setAuth($login, $user_id)
+	{
+		$this->db->update($this::TABLE_NAME[0], $login, ['id' => $user_id]);
+		return $this->db->affected_rows();
+	}
 
+	// user_details table
 	public function getUserDetails($data)
 	{
 		return $this->db->get_where($this::TABLE_NAME[1], $data)->row_object();
 	}
 
 	// Auth model 
-
 	public function signupUser($data)
 	{
 		$this->db->trans_start();
@@ -80,7 +83,6 @@ class Auth_Model extends CI_Model
 	}
 
 	// user_token table
-
 	public function insertToken($user_token)
 	{
 		$this->db->insert('user_token', $user_token);

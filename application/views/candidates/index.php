@@ -19,11 +19,11 @@
 							<div class="tombol">
 								<a href='<?= base_url(); ?>admin/candidate/create' class="btn btn-primary">Tambah Candidate</a>
 							</div>
-							<?php if($this->session->flashdata('message')) : ?>
+							<?php if ($this->session->flashdata('message')) : ?>
 								<div class="col-md-8 m-3">
-								<?= $this->session->flashdata('message'); ?>
+									<?= $this->session->flashdata('message'); ?>
 								</div>
-							<?php endif;?>
+							<?php endif; ?>
 							<div class="card-body">
 								<div class="table-responsive">
 									<table class="table table-striped" id="table-2">
@@ -49,7 +49,7 @@
 														<?= statusBadge($candidate->status); ?>
 													</td>
 													<td>
-														<a href="<?= base_url('admin/candidate/') . $candidate->id . "/details"; ?>" class="detail btn btn-primary" data-toggle="modal" data-target="#detailModal"><i class="fas fa-info-circle"></i></a>
+														<a href="<?= base_url('admin/candidate/') . $candidate->id . "/details"; ?>" class="candidate_details btn btn-primary" data-toggle="modal" data-target="#detailModal" data-id="<?= $candidate->id; ?>" data-link="admin/candidate/details"><i class="fas fa-info-circle"></i></a>
 														<a href="<?= base_url('admin/candidate/') . $candidate->id . "/edit"; ?>" class="btn btn-success"><i class="far fa-edit"></i></a>
 														<a data-link="admin/candidate/<?= $candidate->id; ?>/delete" data-id="<?= $candidate->id; ?>" class="hapus btn btn-danger"><i class="far fa-trash-alt"></i></button>
 													</td>
@@ -64,4 +64,53 @@
 				</div>
 			</div>
 		</section>
+	</div>
+
+	<div class="modal fade" tabindex="-1" role="dialog" id="detailModal">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Detail Candidate</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<div class="row mb-3">
+						<div class="col-md-4"><strong>Nama</strong></div>
+						<div class="col-md-2">:</div>
+						<div class="col-md-6 nama"></div>
+					</div>
+					<div class="row mb-3">
+						<div class="col-md-4"><strong>NIM</strong></div>
+						<div class="col-md-2">:</div>
+						<div class="col-md-6 nim"></div>
+					</div>
+					<div class="row mb-3">
+						<div class="col-md-4"><strong>Email</strong></div>
+						<div class="col-md-2">:</div>
+						<div class="col-md-6 email"></div>
+					</div>
+					<div class="row mb-3">
+						<div class="col-md-4"><strong>Visi</strong></div>
+						<div class="col-md-2">:</div>
+						<div class="col-md-6 visi"></div>
+					</div>
+					<div class="row mb-3">
+						<div class="col-md-4"><strong>Misi</strong></div>
+						<div class="col-md-2">:</div>
+						<div class="col-md-6 misi"></div>
+					</div>
+					<div class="row mb-3">
+						<div class="col-md-4"><strong>User Last Login</strong></div>
+						<div class="col-md-2">:</div>
+						<div class="col-md-6 last_login"></div>
+					</div>
+				</div>
+				<div class="modal-footer bg-whitesmoke br">
+					<a href="<?= base_url(); ?>" class="btn btn-primary">Details</a>
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
 	</div>

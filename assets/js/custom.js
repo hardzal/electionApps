@@ -54,8 +54,70 @@ $(function () {
 		return false;
 	});
 
-	$('.')
-	
+	$('.user_details').on('click', function () {
+		const id = $(this).data('id');
+		const link = $(this).data('link');
+
+		$.ajax({
+			url: base_url + link,
+			type: "post",
+			data: {
+				id: id,
+			},
+			dataType: "json",
+			success: function (data) {
+				$('.nama').html(data.name);
+				$('.nim').html(data.nim);
+				$('.email').html(data.email);
+				$('.hp').html(data.hp);
+				$('.role').html(data.role);
+				$('.last_login').html(data.last_login);
+			}
+		});
+	});
+
+	$('.candidate_details').on('click', function () {
+		const id = $(this).data('id');
+		const link = $(this).data('link');
+
+		$.ajax({
+			url: base_url + link,
+			type: "post",
+			data: {
+				id: id,
+			},
+			dataType: "json",
+			success: function (data) {
+				console.log(data);
+				$('.nama').html(data.name);
+				$('.nim').html(data.nim);
+				$('.email').html(data.email);
+				$('.visi').html(data.visi);
+				$('.misi').html(data.misi);
+				$('.last_login').html(data.last_login);
+			}
+		});
+	});
+
+	$('.election_details').on('click', function () {
+		const id = $(this).data('id');
+		const link = $(this).data('link');
+
+		$.ajax({
+			url: base_url + link,
+			type: "post",
+			data: {
+				id: id,
+			},
+			dataType: "json",
+			success: function (data) {
+				$('.name').html(data.title);
+				$('.start').html(data.start_at);
+				$('.end').html(data.end_at);
+			}
+		});
+	});
+
 	$('#nim_candidate').autocomplete({
 		source: `${base_url}admin/candidate/getCandidateByNim`,
 		select: function (event, ui) {

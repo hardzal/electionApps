@@ -20,12 +20,12 @@
 								<a href='<?= base_url(); ?>admin/election/create' class="btn btn-primary">Tambah Pemilihan</a>
 							</div>
 
-							<?php if($this->session->flashdata('message')) : ?>
+							<?php if ($this->session->flashdata('message')) : ?>
 								<div class="col-md-8 m-3">
-								<?= $this->session->flashdata('message'); ?>
+									<?= $this->session->flashdata('message'); ?>
 								</div>
-							<?php endif;?>
-							
+							<?php endif; ?>
+
 							<div class="card-body">
 								<div class="table-responsive">
 									<table class="table table-striped" id="table-2">
@@ -63,7 +63,7 @@
 														<?= statusBadge($election->status); ?>
 													</td>
 													<td>
-														<a href="<?= base_url('admin/election/') . $election->id . "/details"; ?>" class="detail btn btn-primary" data-toggle="modal" data-target="#detailModal"><i class="fas fa-info-circle"></i></a>
+														<a href="<?= base_url('admin/election/') . $election->id . "/details"; ?>" class="election_details btn btn-primary" data-toggle="modal" data-target="#detailModal" data-id="<?= $election->id; ?>" data-link="admin/election/details"><i class="fas fa-info-circle"></i></a>
 														<a href="<?= base_url('admin/election/') . $election->id . "/edit"; ?>" class="btn btn-success"><i class="far fa-edit"></i></a>
 														<a data-link="admin/election/<?= $election->id; ?>/delete" data-id="<?= $election->id; ?>" class="hapus btn btn-danger"><i class="far fa-trash-alt"></i></button>
 													</td>
@@ -78,4 +78,43 @@
 				</div>
 			</div>
 		</section>
+	</div>
+
+	<div class="modal fade" tabindex="-1" role="dialog" id="detailModal">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Detail Election</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<div class="row mb-3">
+						<div class="col-md-4"><strong>Nama Pemilihan</strong></div>
+						<div class="col-md-2">:</div>
+						<div class="col-md-6 name"></div>
+					</div>
+					<div class="row mb-3">
+						<div class="col-md-4"><strong>Waktu Mulai</strong></div>
+						<div class="col-md-2">:</div>
+						<div class="col-md-6 start"></div>
+					</div>
+					<div class="row mb-3">
+						<div class="col-md-4"><strong>Waktu Akhir</strong></div>
+						<div class="col-md-2">:</div>
+						<div class="col-md-6 end"></div>
+					</div>
+					<div class="row mb-3">
+						<div class="col-md-4"><strong>Kandidat</strong></div>
+						<div class="col-md-2">:</div>
+						<div class="col-md-6 candidates"></div>
+					</div>
+				</div>
+				<div class="modal-footer bg-whitesmoke br">
+					<a href="<?= base_url(); ?>" class="btn btn-primary">Details</a>
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
 	</div>
