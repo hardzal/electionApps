@@ -1,11 +1,12 @@
 <?php
-
+defined('BASEPATH') or exit('No direct script access allowed');
 class Candidate extends CI_Controller
 {
 	public function __construct()
 	{
 		parent::__construct();
 		is_logged_in();
+		checkAccess(1);
 		$this->load->model("Candidate_Model", "candidates");
 	}
 
@@ -93,7 +94,7 @@ class Candidate extends CI_Controller
 		$visi = $this->input->post('visi', true);
 		$misi = $this->input->post('misi', true);
 
-		$img_name = doUploadImage('candidates');
+		$img_name = doUploadImage('candidates/images');
 
 		$candidate = [
 			'election_id' => $election_id,
@@ -148,7 +149,7 @@ class Candidate extends CI_Controller
 		$misi = $this->input->post('misi', true);
 
 		if (!empty($_SESSION['img']['tmp_name'])) {
-			$img_name = doUploadImage('candidates');
+			$img_name = doUploadImage('candidates/images');
 		} else {
 			$img_name = $this->input->post("image_hidden", true);
 		}

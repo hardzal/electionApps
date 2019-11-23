@@ -1,5 +1,5 @@
 <?php
-
+defined('BASEPATH') or exit('No direct script access allowed');
 class Dashboard extends CI_Controller
 {
 	public function __construct()
@@ -11,9 +11,7 @@ class Dashboard extends CI_Controller
 
 	public function index()
 	{
-		if ($this->session->userdata('role_id') != 1) {
-			redirect('dashboard/candidate');
-		}
+		checkAccess(1);
 
 		$data['title'] = "Admin Dashboard";
 		$data['user_data'] = getUserData();
@@ -26,9 +24,7 @@ class Dashboard extends CI_Controller
 
 	public function candidate()
 	{
-		if ($this->session->userdata('role_id') != 2) {
-			redirect('member');
-		}
+		checkAccess(2);
 
 		$data['title'] = "Candidate Dashboard";
 		$data['user_data'] = getUserData();
@@ -41,9 +37,7 @@ class Dashboard extends CI_Controller
 
 	public function member()
 	{
-		if ($this->session->userdata('role_id') != 3) {
-			redirect('auth');
-		}
+		checkAccess(3);
 
 		$data['title'] = "Member Dashboard";
 		$data['user_data'] = getUserData();

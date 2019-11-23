@@ -1,5 +1,5 @@
 <?php
-
+defined('BASEPATH') or exit('No direct script access allowed');
 class Auth extends CI_Controller
 {
 	public function __construct()
@@ -43,6 +43,7 @@ class Auth extends CI_Controller
 
 		if ($user) {
 			if ($user->is_active) {
+
 				if (password_verify($password, $user->password)) {
 					$data = [
 						'id' => $user->id,
@@ -69,6 +70,9 @@ class Auth extends CI_Controller
 					$this->session->set_flashdata('message', '<div class="alert alert-danger">Wrong password!</div>');
 					redirect('auth');
 				}
+			} else {
+				$this->session->set_flashdata('message', '<div class="alert alert-danger">User not active!</div>');
+				redirect('auth');
 			}
 		} else {
 			$this->session->set_flashdata('message', '<div class="alert alert-danger">This email not registered!</div>');

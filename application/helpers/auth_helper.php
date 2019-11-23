@@ -9,17 +9,11 @@ function is_logged_in()
 	}
 }
 
-function checkAccess()
+function checkAccess($role_id)
 {
 	$ci = &get_instance();
-
-	if ($ci->session->userdata('role_id') == 1) {
-		redirect('dashboard/index');
-	} else if ($ci->session->userdata('role_id') == 2) {
-		redirect('dashboard/candidate');
-	} else if ($ci->session->userdata('role_id') == 3) {
-		redirect('dashboard/member');
-	} else {
+	
+	if ($ci->session->userdata('role_id') != $role_id) {
 		redirect('auth');
 	}
 }

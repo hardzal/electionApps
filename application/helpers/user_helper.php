@@ -31,3 +31,4 @@ function isUserActive($user_id, $is_active)
 		return "<span class='badge badge-danger'>Tidak Aktif</span>";
 	}
 }
+

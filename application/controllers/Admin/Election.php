@@ -1,11 +1,12 @@
 <?php
-
+defined('BASEPATH') or exit('No direct script access allowed');
 class Election extends CI_Controller
 {
 	public function __construct()
 	{
 		parent::__construct();
 		is_logged_in();
+		checkAccess(1);
 		$this->load->model("Election_Model", "elections");
 	}
 
@@ -68,7 +69,7 @@ class Election extends CI_Controller
 		$title = $this->input->post('judul', true);
 		$start = $this->input->post('mulai', true);
 		$end = $this->input->post('akhir', true);
-		$image = doUploadImage('elections');
+		$image = doUploadImage('elections/images');
 		$description = $this->input->post('deskripsi', true);
 
 		# candidates
@@ -125,7 +126,7 @@ class Election extends CI_Controller
 		$description = $this->input->post('deskripsi', true);
 
 		if (!empty($_FILES['image']['tmp_name'])) {
-			$img_name = doUploadImage('elections');
+			$img_name = doUploadImage('elections/images');
 		} else {
 			$img_name = $this->input->post('image_hidden', true);
 		}
@@ -147,7 +148,7 @@ class Election extends CI_Controller
 		$election_id = $this->input->post('id');
 		$election = $this->elections->getElection($election_id);
 
-		deleteImage("elections", $election->image);
+		deleteImage("elections/images", $election->image);
 		$this->elections->delete($election_id);
 
 		if ($id == null) {

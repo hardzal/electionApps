@@ -44,7 +44,7 @@
 											$no = 1;
 											foreach ($users as $user) : ?>
 												<tr class="user-row">
-													<td><?= $no++; ?></td>
+													<td class="text-center"><?= $no++; ?></td>
 													<td><?= $user->name; ?></td>
 													<td><?= $user->nim; ?></td>
 													<td><?= $user->email; ?></td>
