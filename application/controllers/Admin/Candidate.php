@@ -11,8 +11,8 @@ class Candidate extends CI_Controller
 
 	public function index()
 	{
-		$data['title'] = "Daftar Kandidat";
-		$data['title_header'] = "Manajemen Kandidat";
+		$data['title'] = "Candidate List";
+		$data['title_header'] = "Management Candidate";
 		$data['user_data'] = getUserData();
 		$data['candidate_data'] = $this->candidates->getCandidates();
 
@@ -59,8 +59,9 @@ class Candidate extends CI_Controller
 
 	public function create()
 	{
-		$data['title'] = "Menambahkan Kandidat";
-		$data['title_header'] = "Manajemen Kandidat";
+		$data['title'] = "Candidate List";
+		$data['title_header'] = "Management Candidate";
+
 		$data['user_data'] = getUserData();
 		$data['elections'] = $this->election->getElections();
 
@@ -76,9 +77,9 @@ class Candidate extends CI_Controller
 			$this->load->view('layouts/dashboard_footer');
 		} else {
 			if ($this->_create()) {
-				$this->session->set_flashdata('message', '<div class="alert alert-success">Berhasil menambahkan data</div>');
+				$this->session->set_flashdata('message', '<div class="alert alert-success">Success create data</div>');
 			} else {
-				$this->session->set_flashdata('message', '<div class="alert alert-danger">Gagal menambahkan data</div>');
+				$this->session->set_flashdata('message', '<div class="alert alert-danger">Failed create data</div>');
 			}
 
 			redirect('admin/candidates');
@@ -111,8 +112,9 @@ class Candidate extends CI_Controller
 
 	public function edit($id)
 	{
-		$data['title'] = "Memperbaharui Kandidat";
-		$data['title_header'] = "Manajemen Kandidat";
+		$data['title'] = "Candidate List";
+		$data['title_header'] = "Candidate Management";
+
 		$data['user_data'] = getUserData();
 		$data['candidate'] = $this->candidates->getCandidates($id);
 		$data['elections'] = $this->election->getElections();
@@ -128,9 +130,9 @@ class Candidate extends CI_Controller
 			$this->load->view('layouts/dashboard_footer');
 		} else {
 			if ($this->_update()) {
-				$this->session->set_flashdata('message', '<div class="alert alert-success">Berhasil memperbaharui data</div>');
+				$this->session->set_flashdata('message', '<div class="alert alert-success">Success create data</div>');
 			} else {
-				$this->session->set_flashdata('message', '<div class="alert alert-danger">Gagal menghapus data</div>');
+				$this->session->set_flashdata('message', '<div class="alert alert-danger">Failed create data</div>');
 			}
 
 			redirect('admin/candidates');

@@ -11,4 +11,16 @@ class Home extends CI_Controller
 	{
 		$this->load->view('home/index');
 	}
+
+	public function elections()
+	{ }
+
+	public function election()
+	{ }
+
+	public function candidates()
+	{ }
+
+	public function candidate()
+	{ }
 }

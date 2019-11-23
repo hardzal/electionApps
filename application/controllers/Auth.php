@@ -9,6 +9,10 @@ class Auth extends CI_Controller
 
 	public function index()
 	{
+		if ($this->session->userdata('nim')) {
+			redirect('dashboard');
+		}
+
 		// Validation
 		$this->form_validation->set_rules('nim', 'Nim', 'required|trim|max_length[10]');
 		$this->form_validation->set_rules('password', 'Password', 'required|min_length[8]');
@@ -55,7 +59,7 @@ class Auth extends CI_Controller
 					} else if ($user->role_id == 2) {
 						redirect('dashboard/candidate');
 					} else if ($user->role_id == 3) {
-						redirect('member');
+						redirect('dashboard/member');
 					} else {
 						$this->session->unset_userdata('nim');
 						$this->session->unset_userdata('role_id');
@@ -75,7 +79,7 @@ class Auth extends CI_Controller
 	public function signup()
 	{
 		if ($this->session->userdata('nim')) {
-			redirect('home');
+			redirect('dashboard');
 		}
 
 		$data['title'] = "Halaman Pendaftaran";
@@ -190,6 +194,10 @@ class Auth extends CI_Controller
 
 	public function verify()
 	{
+		if ($this->session->userdata('nim')) {
+			redirect('dashboard');
+		}
+
 		$email = $this->input->get('email');
 		$token = $this->input->get('token');
 
@@ -226,7 +234,7 @@ class Auth extends CI_Controller
 	public function forgotPassword()
 	{
 		if ($this->session->userdata('email')) {
-			redirect('user');
+			redirect('dashboard');
 		}
 
 		$data['title'] = "Forgot Password";

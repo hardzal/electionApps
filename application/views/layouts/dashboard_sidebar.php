@@ -56,26 +56,35 @@
 						<li>
 							<a href="<?= base_url(); ?>dashboard" class="nav-link"><i class="fas fa-fire"></i><span>Dashboard</span></a>
 						</li>
-						<li class="menu-header">Management</li>
-						<li>
-							<a href="<?= base_url() . "admin/elections"; ?>" class="nav-link">
-								<i class="fas fa-vote-yea"></i><span>Elections</span>
-							</a>
-						</li>
-						<li>
-							<a href="<?= base_url() . "admin/candidates"; ?>" class="nav-link">
-								<i class="fas fa-user-tie"></i><span>Candidates</span>
-							</a>
-						</li>
-						<li class="nav-item dropdown">
-							<a href="#" class="nav-link has-dropdown"><i class="fas fa-users"></i><span>Users</span></a>
-							<ul class="dropdown-menu">
-								<li><a href="<?= base_url() . "admin/users"; ?>" class="nav-link"><span>List</span></a></li>
-								<li><a href="<?= base_url() . "admin/users/logs"; ?>" class="nav-link"><span>Logs</span></a></li>
-								<li><a href="<?= base_url() . "admin/users/feedbacks"; ?>" class="nav-link"><span>Feedbacks</span></a></li>
-							</ul>
-						</li>
-						<li class="menu-header">Pages</li>
+
+						<?php if ($this->session->userdata('role_id') == 1) : ?>
+							<li class="menu-header">Management</li>
+							<li>
+								<a href="<?= base_url() . "admin/elections"; ?>" class="nav-link">
+									<i class="fas fa-vote-yea"></i><span>Elections</span>
+								</a>
+							</li>
+							<li>
+								<a href="<?= base_url() . "admin/candidates"; ?>" class="nav-link">
+									<i class="fas fa-user-tie"></i><span>Candidates</span>
+								</a>
+							</li>
+							<li class="nav-item dropdown">
+								<a href="#" class="nav-link has-dropdown"><i class="fas fa-users"></i><span>Users</span></a>
+								<ul class="dropdown-menu">
+									<li><a href="<?= base_url() . "admin/users"; ?>" class="nav-link"><span>List</span></a></li>
+									<li><a href="<?= base_url() . "admin/users/logs"; ?>" class="nav-link"><span>Logs</span></a></li>
+									<li><a href="<?= base_url() . "admin/users/feedbacks"; ?>" class="nav-link"><span>Feedbacks</span></a></li>
+								</ul>
+							</li>
+						<?php else : ?>
+							<li>
+								<a href="<?= base_url() . "elections"; ?>"><i class="fas fa-vote-yea"></i><span>Elections</span></a>
+							</li>
+							<li><a href="<?= base_url() . "candidates"; ?>"><i class="fas fa-user-tie"></i><span>Candidates</span></a>
+							</li>
+						<?php endif; ?>
+						<li class=" menu-header">Pages</li>
 						<li>
 							<a href="<?= base_url() . "dashboard/logs"; ?>" class="nav-link">
 								<i class="fas fa-history"></i><span>Logs</span>

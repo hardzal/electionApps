@@ -32,10 +32,7 @@
 										<thead>
 											<tr>
 												<th class="text-center">
-													<div class="custom-checkbox custom-control">
-														<input type="checkbox" data-checkboxes="mygroup" data-checkbox-role="dad" class="custom-control-input" id="checkbox-all">
-														<label for="checkbox-all" class="custom-control-label">&nbsp;</label>
-													</div>
+													#
 												</th>
 												<th>Title</th>
 												<th>Candidates</th>
@@ -48,7 +45,7 @@
 										<tbody>
 											<?php foreach ($elections_data as $election) : ?>
 												<tr>
-													<td class="align-middle">
+													<td class="align-middle text-center">
 														<?= $election->id; ?>
 													</td>
 													<td class="align-middle"><?= $election->title; ?></td>
@@ -108,7 +105,7 @@
 					<div class="row mb-3">
 						<div class="col-md-4"><strong>Kandidat</strong></div>
 						<div class="col-md-2">:</div>
-						<div class="col-md-6 candidates"></div>
+						<div class="col-md-6 kandidat"></div>
 					</div>
 				</div>
 				<div class="modal-footer bg-whitesmoke br">

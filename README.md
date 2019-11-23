@@ -35,8 +35,8 @@ jika pemilihan sudah berakhir maka user akan diberi notifikasi bahwa pemilihan t
 ## Routes
 ### General
 - [ ] /home
-- [ ] /stats
 - [ ] /elections
+- [ ] /candidates
 ---
 ### Authentication
 - [x] /auth/login
@@ -67,18 +67,19 @@ jika pemilihan sudah berakhir maka user akan diberi notifikasi bahwa pemilihan t
 - [ ] /admin/candidates/export
 ---
 ### User
-- [x] /users
-- [x] /user/:id/details
-- [x] /user/create
-- [x] /user/:id/delete
-- [x] /user/:id/edit
-- [ ] /users/feedback
-- [ ] /users/export
-- [ ] /users/import
+- [x] /admin/users
+- [x] /admin/user/:id/details
+- [x] /admin/user/create
+- [x] /admin/user/:id/delete
+- [x] /admin/user/:id/edit
+- [ ] /admin/users/feedback
+- [ ] /admin/users/export
+- [ ] /admin/users/import
 ---
 ### Admin
 - [x] /admin
 - [ ] /admin/settings
+- [ ] /admin/user/logs
 - [ ] /admin/logs
 ---
 ### Member
@@ -86,7 +87,6 @@ jika pemilihan sudah berakhir maka user akan diberi notifikasi bahwa pemilihan t
 - [ ] /member/settings
 - [ ] /member/profile
 - [ ] /member/logs
-
 ---- 
 ## Database Migration
 
@@ -100,4 +100,22 @@ jika pemilihan sudah berakhir maka user akan diberi notifikasi bahwa pemilihan t
 
 	``
 	$ php index.php migration create your_migration_name
+	``
+---
+## User Login
+
+- Administrator
+	``
+		NIM: 123000000
+		Password: password
+	``
+- Candidate
+	``
+		NIM: 
+		Password: 
+	``
+- Member
+	``
+		NIM: 
+		Password:
 	``

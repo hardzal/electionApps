@@ -11,8 +11,8 @@ class Election extends CI_Controller
 
 	public function index()
 	{
-		$data['title'] = "Daftar Pemilihan";
-		$data['title_header'] = "Manajemen Pemilihan";
+		$data['title'] = "Election List";
+		$data['title_header'] = "Election Management";
 
 		$data['user_data'] = getUserData();
 		$data['elections_data'] = $this->elections->getElections();
@@ -27,7 +27,7 @@ class Election extends CI_Controller
 	{
 		if ($id == null) {
 			$election_id = $this->input->post('id');
-			$election = $this->elections->getElection($election_id);
+			$election = $this->elections->getCandidatesElection($election_id);
 			echo json_encode($election);
 			return;
 		}
@@ -37,8 +37,8 @@ class Election extends CI_Controller
 
 	public function create()
 	{
-		$data['title'] = "Menambahkan Pemilihan";
-		$data['title_header'] = "Manajemen Pemilihan";
+		$data['title'] = "Election List";
+		$data['title_header'] = "Election Management";
 
 		$data['user_data'] = getUserData();
 
@@ -89,8 +89,8 @@ class Election extends CI_Controller
 
 	public function edit($id)
 	{
-		$data['title'] = "Menambahkan Pemilihan";
-		$data['title_header'] = "Manajemen Pemilihan";
+		$data['title'] = "Election List";
+		$data['title_header'] = "Election Management";
 
 		$data['user_data'] = getUserData();
 		$data['election'] = $this->elections->getElection($id);

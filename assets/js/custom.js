@@ -111,9 +111,13 @@ $(function () {
 			},
 			dataType: "json",
 			success: function (data) {
-				$('.name').html(data.title);
-				$('.start').html(data.start_at);
-				$('.end').html(data.end_at);
+				$('.name').html(data[0].title);
+				$('.start').html(data[0].start_at);
+				$('.end').html(data[0].end_at);
+				$('.kandidat').html("<ul class='list-group'></ul>");
+				for (const kandidat of data) {
+					$('.kandidat ul').append("<li class='list-group-item'>" + kandidat.name + "</li>");
+				}
 			}
 		});
 	});

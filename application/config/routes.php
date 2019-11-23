@@ -81,3 +81,9 @@ $route['admin/user/(:num)'] = 'admin/user/detail/$1';
 $route['admin/user/(:num)/details'] = 'admin/user/detail/$1';
 $route['admin/user/(:num)/edit'] = 'admin/user/edit/$1';
 $route['admin/user/(:num)/delete'] = 'admin/user/delete/$1';
+
+$route['elections'] = "home/elections";
+$route['election/(:num)'] = "home/elections/$1";
+
+$route['candidates'] = "home/candidates";
+$route['candidate/(:num)'] = "home/candidates/$1";
